@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="460" viewBox="0 0 820 460">
+  <rect width="820" height="460" fill="#f8fafc"/>
+
+  <!-- Header -->
+  <rect width="820" height="62" fill="#059669"/>
+  <text x="28" y="23" font-family="Arial" font-size="9" font-weight="700" fill="rgba(255,255,255,.65)" letter-spacing="2">REVISIÓN SISTEMÁTICA DE LITERATURA</text>
+  <text x="28" y="47" font-family="Arial" font-size="18" font-weight="700" fill="#fff">Análisis Comparativo de Intervenciones Terapéuticas</text>
+
+  <!-- Table card -->
+  <rect x="28" y="80" width="764" height="358" rx="14" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Column headers -->
+  <rect x="28" y="80" width="764" height="38" rx="14" fill="#059669"/>
+  <rect x="28" y="94" width="764" height="24" fill="#059669"/>
+  <text x="120" y="104" font-family="Arial" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">ASPECTO</text>
+  <text x="400" y="104" font-family="Arial" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">TERAPIA TRADICIONAL</text>
+  <text x="660" y="104" font-family="Arial" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">ASISTIDA POR TECNOLOGÍA</text>
+
+  <!-- Dividers -->
+  <line x1="240" y1="80" x2="240" y2="438" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+  <line x1="520" y1="118" x2="520" y2="438" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="240" y1="118" x2="240" y2="438" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Row 1 — Personalización -->
+  <rect x="28" y="118" width="764" height="48" fill="#fff"/>
+  <rect x="28" y="118" width="212" height="48" fill="#f8fafc"/>
+  <text x="48" y="138" font-family="Arial" font-size="12" font-weight="700" fill="#0f172a">Personalización</text>
+  <text x="48" y="155" font-family="Arial" font-size="10" fill="#64748b">del tratamiento</text>
+  <text x="260" y="138" font-family="Arial" font-size="11" fill="#475569">Depende del terapeuta</text>
+  <text x="260" y="154" font-family="Arial" font-size="10" fill="#94a3b8">ajuste manual, lento</text>
+  <text x="540" y="138" font-family="Arial" font-size="11" fill="#059669" font-weight="600">Sistemas adaptativos</text>
+  <text x="540" y="154" font-family="Arial" font-size="10" fill="#64748b">ajuste dinámico en tiempo real</text>
+
+  <!-- Row 2 — Accesibilidad -->
+  <rect x="28" y="166" width="764" height="48" fill="#f8fafc"/>
+  <rect x="28" y="166" width="212" height="48" fill="#eef2f7"/>
+  <text x="48" y="186" font-family="Arial" font-size="12" font-weight="700" fill="#0f172a">Accesibilidad</text>
+  <text x="48" y="203" font-family="Arial" font-size="10" fill="#64748b">geográfica / horaria</text>
+  <text x="260" y="186" font-family="Arial" font-size="11" fill="#475569">Limitada por ubicación</text>
+  <text x="260" y="202" font-family="Arial" font-size="10" fill="#94a3b8">sesiones presenciales</text>
+  <text x="540" y="186" font-family="Arial" font-size="11" fill="#059669" font-weight="600">Acceso remoto / digital</text>
+  <text x="540" y="202" font-family="Arial" font-size="10" fill="#64748b">disponible 24/7 desde el hogar</text>
+
+  <!-- Row 3 — Compromiso -->
+  <rect x="28" y="214" width="764" height="48" fill="#fff"/>
+  <rect x="28" y="214" width="212" height="48" fill="#f8fafc"/>
+  <text x="48" y="234" font-family="Arial" font-size="12" font-weight="700" fill="#0f172a">Compromiso</text>
+  <text x="48" y="251" font-family="Arial" font-size="10" fill="#64748b">engagement del paciente</text>
+  <text x="260" y="234" font-family="Arial" font-size="11" fill="#475569">Variable</text>
+  <text x="260" y="250" font-family="Arial" font-size="10" fill="#94a3b8">depende del vínculo terapéutico</text>
+  <text x="540" y="234" font-family="Arial" font-size="11" fill="#059669" font-weight="600">Alta interactividad</text>
+  <text x="540" y="250" font-family="Arial" font-size="10" fill="#64748b">gamificación y retroalimentación</text>
+
+  <!-- Row 4 — Validación LP -->
+  <rect x="28" y="262" width="764" height="48" fill="#f8fafc"/>
+  <rect x="28" y="262" width="212" height="48" fill="#eef2f7"/>
+  <text x="48" y="282" font-family="Arial" font-size="12" font-weight="700" fill="#0f172a">Validación</text>
+  <text x="48" y="299" font-family="Arial" font-size="10" fill="#64748b">largo plazo</text>
+  <text x="260" y="282" font-family="Arial" font-size="11" fill="#059669" font-weight="600">Más consolidada</text>
+  <text x="260" y="298" font-family="Arial" font-size="10" fill="#64748b">décadas de evidencia clínica</text>
+  <text x="540" y="282" font-family="Arial" font-size="11" fill="#f59e0b" font-weight="600">Aún limitada</text>
+  <text x="540" y="298" font-family="Arial" font-size="10" fill="#94a3b8">muestras pequeñas, corto plazo</text>
+
+  <!-- Row 5 — Infraestructura -->
+  <rect x="28" y="310" width="764" height="48" fill="#fff"/>
+  <rect x="28" y="310" width="212" height="48" fill="#f8fafc"/>
+  <text x="48" y="330" font-family="Arial" font-size="12" font-weight="700" fill="#0f172a">Infraestructura</text>
+  <text x="48" y="347" font-family="Arial" font-size="10" fill="#64748b">requerida</text>
+  <text x="260" y="330" font-family="Arial" font-size="11" fill="#059669" font-weight="600">Baja</text>
+  <text x="260" y="346" font-family="Arial" font-size="10" fill="#64748b">consultorio + terapeuta</text>
+  <text x="540" y="330" font-family="Arial" font-size="11" fill="#f59e0b" font-weight="600">Alta</text>
+  <text x="540" y="346" font-family="Arial" font-size="10" fill="#94a3b8">dispositivos, conectividad, IT</text>
+
+  <!-- Row 6 — Escalabilidad -->
+  <rect x="28" y="358" width="764" height="48" fill="#f8fafc"/>
+  <rect x="28" y="358" width="212" height="48" fill="#eef2f7"/>
+  <text x="48" y="378" font-family="Arial" font-size="12" font-weight="700" fill="#0f172a">Escalabilidad</text>
+  <text x="48" y="395" font-family="Arial" font-size="10" fill="#64748b">potencial de alcance</text>
+  <text x="260" y="378" font-family="Arial" font-size="11" fill="#475569">Limitada</text>
+  <text x="260" y="394" font-family="Arial" font-size="10" fill="#94a3b8">acotada por recursos humanos</text>
+  <text x="540" y="378" font-family="Arial" font-size="11" fill="#059669" font-weight="600">Potencialmente alta</text>
+  <text x="540" y="394" font-family="Arial" font-size="10" fill="#64748b">plataformas digitales escalables</text>
+
+  <!-- Footer -->
+  <rect x="28" y="406" width="764" height="32" rx="0 0 14 14" fill="#f8fafc"/>
+  <rect x="28" y="406" width="764" height="16" fill="#f8fafc"/>
+  <rect x="28" y="420" width="764" height="18" rx="0 0 14 14" fill="#f8fafc"/>
+  <text x="48" y="426" font-family="Arial" font-size="10" fill="#94a3b8">Basado en revisión de 47 estudios · TEA — Trastorno del Espectro Autista</text>
+  <text x="784" y="426" font-family="Arial" font-size="10" fill="#059669" text-anchor="end" font-weight="600">83.5% precisión promedio</text>
+</svg>
