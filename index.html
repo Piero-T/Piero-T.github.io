@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piero Tavara | Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#059669;--primary-dark:#047857;--primary-light:#a7f3d0;
+  --on-primary:#fff;--text:#0f172a;--text-muted:#475569;--text-subtle:#94a3b8;
+  --bg:#f8fafc;--surface:#fff;--surface2:#f1f5f9;--surface3:#e2e8f0;
+  --border:#e2e8f0;--border2:#cbd5e1;
+  --shadow:0 1px 3px rgba(0,0,0,.08);--shadow-lg:0 10px 40px rgba(0,0,0,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;display:inline-block;vertical-align:middle;line-height:1}
+.grad{background:linear-gradient(135deg,var(--primary),var(--primary-dark))}
+.dot-bg{background-image:radial-gradient(circle at 2px 2px,rgba(5,150,105,.05) 1px,transparent 0);background-size:40px 40px}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade.in{opacity:1;transform:none}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+#nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.03em;color:var(--text)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--text-muted);transition:color .2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-toggle{display:flex;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:3px;gap:2px}
+.lang-btn{padding:4px 12px;border-radius:100px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;background:transparent;color:var(--text-muted);transition:all .2s}
+.lang-btn.active{background:var(--primary);color:#fff;box-shadow:0 1px 4px rgba(5,150,105,.3)}
+.nav-cta{display:flex;align-items:center;gap:6px;padding:9px 20px;border-radius:100px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:#fff;border:none;cursor:pointer;transition:transform .2s}
+.nav-cta:hover{transform:scale(1.04)}
+
+/* SECTIONS */
+section{padding:96px 0}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.section-label{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:100px;background:var(--primary-light);color:#064e3b;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.section-h2{font-family:'Manrope',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:var(--text)}
+.section-h2 .accent{color:var(--primary)}
+.section-desc{margin-top:16px;color:var(--text-muted);max-width:520px;line-height:1.75;font-size:15px}
+
+/* HERO */
+#hero{min-height:100vh;padding-top:64px;display:flex;align-items:center;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;top:0;right:0;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(5,150,105,.07),transparent 70%);transform:translate(30%,-20%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center;width:100%;padding:60px 0}
+.hero-bg-text{position:absolute;top:50%;left:32px;font-family:'Manrope',sans-serif;font-size:clamp(100px,14vw,180px);font-weight:800;color:rgba(15,23,42,.035);letter-spacing:-.05em;transform:translateY(-50%);pointer-events:none;user-select:none;z-index:0;white-space:nowrap}
+.hero-content{position:relative;z-index:1;display:flex;flex-direction:column;gap:28px}
+.hero-avail{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:100px;background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.2);width:fit-content}
+.hero-avail-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);animation:pulse 2s infinite}
+.hero-avail span{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.hero-h1{font-family:'Manrope',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1.08;color:var(--text)}
+.hero-h1 .accent{color:var(--primary)}
+.hero-p{font-size:17px;color:var(--text-muted);max-width:520px;line-height:1.8}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:100px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;color:#fff;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(5,150,105,.35)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:100px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;color:var(--text);background:#fff;border:1.5px solid var(--border2);cursor:pointer;transition:all .2s}
+.btn-secondary:hover{background:var(--surface2)}
+.hero-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:32px;border-top:1px solid var(--border)}
+.pillar-label{display:flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:6px}
+.pillar-title{font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin-bottom:6px}
+.pillar-desc{font-size:12px;color:var(--text-muted);line-height:1.6}
+.hero-photo-wrap{position:relative}
+.hero-photo{width:100%;aspect-ratio:4/5;border-radius:32px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.12);border:2px solid rgba(255,255,255,.8);position:relative;z-index:1}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.photo-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2),var(--surface3));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:2px dashed var(--border2)}
+.photo-placeholder .material-symbols-outlined{font-size:56px;color:var(--text-subtle)}
+.photo-placeholder p{font-size:13px;color:var(--text-muted);text-align:center;line-height:1.5}
+.photo-placeholder small{font-size:11px;opacity:.6}
+.hero-badge{position:absolute;bottom:-12px;right:32px;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);padding:10px 20px;border-radius:100px;border:1px solid var(--border2);box-shadow:0 8px 30px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);position:relative}
+.badge-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--primary);animation:ping 1.5s infinite;opacity:0}
+@keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.2);opacity:0}}
+.badge-text{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text)}
+.hero-deco-tr{position:absolute;top:-24px;right:-24px;width:120px;height:120px;border-top:2px solid rgba(5,150,105,.2);border-right:2px solid rgba(5,150,105,.2);border-radius:0 32px 0 0;z-index:0;transition:transform .5s}
+.hero-photo-wrap:hover .hero-deco-tr{transform:translate(6px,-6px)}
+.hero-deco-bl{position:absolute;bottom:-24px;left:-24px;width:120px;height:120px;border-bottom:2px solid rgba(5,150,105,.1);border-left:2px solid rgba(5,150,105,.1);border-radius:0 0 0 32px;z-index:0}
+
+/* SERVICES */
+#services{background:#fff}
+.services-intro{margin-bottom:56px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service-card{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px;transition:all .2s}
+.service-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.service-icon{width:48px;height:48px;background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);box-shadow:var(--shadow)}
+.service-icon .material-symbols-outlined{font-size:24px;color:var(--primary)}
+.service-title{font-family:'Manrope',sans-serif;font-size:17px;font-weight:700;color:var(--text)}
+.service-desc{font-size:14px;color:var(--text-muted);line-height:1.7;flex:1}
+.tag-list{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;background:#fff;border:1px solid var(--border2);border-radius:6px;color:var(--text-muted)}
+
+/* PROJECTS */
+#projects{background:var(--bg)}
+.projects-header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px;flex-wrap:wrap}
+.see-all{display:inline-flex;align-items:center;gap:6px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--primary);transition:gap .2s}
+.see-all:hover{gap:10px}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.proj-featured{grid-column:1/-1;background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .2s}
+.proj-featured:hover{box-shadow:var(--shadow-lg)}
+.proj-img{height:160px;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.proj-img .material-symbols-outlined{font-size:40px;color:var(--text-subtle)}
+.proj-img span.hint{font-size:12px;color:var(--text-muted)}
+.proj-body{padding:32px}
+.proj-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.proj-chip{padding:4px 12px;border-radius:100px;background:var(--primary-light);color:#064e3b;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600}
+.proj-title{font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-.02em}
+.proj-desc{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:20px}
+.proj-link{display:inline-flex;align-items:center;gap:6px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--primary);transition:gap .2s}
+.proj-link:hover{gap:10px}
+.proj-small{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .2s;display:flex;flex-direction:column}
+.proj-small:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.proj-small-img{height:120px;background:var(--surface2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+.proj-small-img .material-symbols-outlined{font-size:32px;color:var(--text-subtle)}
+.proj-small-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:10px}
+.proj-small-title{font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;color:var(--text)}
+.proj-small-desc{font-size:13px;color:var(--text-muted);line-height:1.6;flex:1}
+.projects-cta{text-align:center;margin-top:40px}
+
+/* EXPERIENCE */
+#experience{background:#fff}
+.exp-timeline{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:0 48px;padding:36px 0;border-bottom:1px solid var(--border)}
+.exp-item:first-child{border-top:1px solid var(--border)}
+.exp-meta{padding-top:4px}
+.exp-date{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;line-height:1.6}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+/* old grid kept for responsive override */
+.exp-grid{display:grid;grid-template-columns:5fr 7fr;gap:20px}
+.exp-card{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;transition:box-shadow .2s}
+.exp-card:hover{box-shadow:var(--shadow-lg)}
+.exp-card.white{background:#fff}
+.exp-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px}
+.exp-icon{width:48px;height:48px;background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);box-shadow:var(--shadow)}
+.exp-icon .material-symbols-outlined{font-size:24px;color:var(--primary)}
+.exp-icon.grad-icon{background:linear-gradient(135deg,var(--primary),var(--primary-dark))}
+.exp-icon.grad-icon .material-symbols-outlined{color:#fff}
+.exp-badge{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px}
+.exp-badge.active{background:rgba(5,150,105,.1);color:var(--primary);border:1px solid rgba(5,150,105,.2)}
+.exp-badge.done{background:var(--surface3);color:var(--text-muted);border:1px solid var(--border2)}
+.exp-co{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.exp-role{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:var(--text);margin-bottom:12px;letter-spacing:-.02em}
+.exp-desc{font-size:14px;color:var(--text-muted);line-height:1.7}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:10px}
+.exp-bullets li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-muted);line-height:1.6}
+.exp-bullets li .material-symbols-outlined{font-size:16px;color:var(--primary);flex-shrink:0;margin-top:2px}
+.exp-stat-big{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:var(--primary);line-height:1}
+.exp-stat-lbl{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.exp-bottom{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);padding-top:20px;text-align:center}
+.exp-bottom-val{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+.exp-bottom-lbl{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-top:2px}
+.exp-row{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.exp-small{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:box-shadow .2s}
+.exp-small:hover{box-shadow:var(--shadow-lg)}
+.exp-small-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.exp-small-info{display:flex;align-items:center;gap:12px}
+.exp-small-icon{width:40px;height:40px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+.exp-small-icon .material-symbols-outlined{font-size:20px;color:var(--primary)}
+.exp-small-co{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.exp-small-role{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:var(--text)}
+
+/* SKILLS */
+#skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.skills-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:32px}
+.skills-card-head{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.skills-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.skills-icon.green{background:rgba(5,150,105,.1)}
+.skills-icon.green .material-symbols-outlined{color:var(--primary)}
+.skills-icon.slate{background:rgba(71,85,105,.1)}
+.skills-icon.slate .material-symbols-outlined{color:var(--text-muted)}
+.skills-card-title{font-family:'Manrope',sans-serif;font-size:17px;font-weight:700;color:var(--text)}
+.skill-chips{display:flex;flex-wrap:wrap;gap:10px}
+.skill-chip{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--text);transition:border-color .2s;cursor:default}
+.skill-chip:hover{border-color:var(--primary)}
+.soft-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.soft-list li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
+.soft-list .material-symbols-outlined{font-size:16px;color:var(--primary)}
+.skills-full{grid-column:1/-1}
+.skills-auto{border-radius:20px;padding:32px;color:#fff;position:relative;overflow:hidden}
+.skills-auto-inner{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.auto-chips{display:flex;flex-wrap:wrap;gap:10px}
+.auto-chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:8px 18px;border-radius:12px;font-size:13px;font-weight:600}
+.skills-auto-bg{position:absolute;right:-20px;bottom:-20px;font-size:180px;opacity:.06;pointer-events:none}
+.skills-edu{background:#fff;border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.edu-left{display:flex;align-items:center;gap:20px}
+.edu-icon{width:56px;height:56px;background:rgba(5,150,105,.1);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.edu-icon .material-symbols-outlined{font-size:28px;color:var(--primary)}
+.edu-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:4px}
+.edu-title{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:var(--text);letter-spacing:-.02em}
+.edu-sub{font-size:13px;color:var(--text-muted);margin-top:2px}
+.edu-year{font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:var(--border2);line-height:1}
+.edu-year-lbl{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);text-align:right}
+
+/* ABOUT */
+#about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text{display:flex;flex-direction:column;gap:20px}
+.about-p{font-size:15px;color:var(--text-muted);line-height:1.85}
+.about-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.about-photo{position:relative}
+.about-photo-inner{aspect-ratio:1;border-radius:28px;overflow:hidden;background:var(--surface2);border:2px dashed var(--border2)}
+.about-location{position:absolute;bottom:-16px;right:-16px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 18px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px}
+.about-location .material-symbols-outlined{color:var(--primary);font-size:20px}
+.about-location span{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+
+/* CONTACT */
+#contact{background:var(--bg)}
+.contact-solo{max-width:720px;margin:0 auto}
+.contact-solo-head{text-align:center;margin-bottom:36px}
+.contact-heading{font-family:'Manrope',sans-serif;font-size:clamp(32px,4vw,50px);font-weight:800;letter-spacing:-.04em;line-height:1.05;color:var(--text);margin-bottom:16px}
+.contact-heading .accent{color:var(--primary)}
+.contact-sub{font-size:15px;color:var(--text-muted);line-height:1.75;margin-bottom:0}
+.contact-links{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.clink{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border:1px solid var(--border);border-radius:14px;transition:all .2s;text-decoration:none;color:var(--text)}
+.clink:hover{border-color:rgba(5,150,105,.3);box-shadow:0 4px 20px rgba(5,150,105,.08);transform:translateX(4px)}
+.clink-left{display:flex;align-items:center;gap:14px}
+.clink-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.clink-name{font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;color:var(--text)}
+.clink-val{font-size:12px;color:var(--text-muted)}
+.clink .material-symbols-outlined.arr{font-size:18px;color:var(--text-muted);transition:color .2s}
+.clink:hover .arr{color:var(--primary)}
+.clink-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.clink-copy{background:none;border:1px solid var(--border);border-radius:8px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:all .18s}
+.clink-copy:hover{background:var(--surface2);color:var(--primary);border-color:rgba(5,150,105,.4)}
+.clink-wa-tag{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;background:#25D366;color:#fff;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;white-space:nowrap}
+.clink-whatsapp{border-color:rgba(37,211,102,.35)}
+.clink-whatsapp:hover{border-color:#25D366;box-shadow:0 4px 20px rgba(37,211,102,.15)}
+.form-card{background:#fff;border:1px solid var(--border);border-radius:24px;padding:40px;box-shadow:var(--shadow)}
+.form-title{font-family:'Manrope',sans-serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:32px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.form-label{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.form-input{background:transparent;border:none;border-bottom:2px solid var(--border);padding:10px 4px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s;width:100%}
+.form-input:focus{border-color:var(--primary)}
+.form-input::placeholder{color:var(--text-subtle)}
+textarea.form-input{resize:none}
+.form-submit{display:flex;justify-content:flex-end;margin-top:8px}
+.form-success{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 0;text-align:center;gap:12px}
+.form-success .material-symbols-outlined{font-size:56px;color:var(--primary)}
+.form-success h3{font-family:'Manrope',sans-serif;font-size:22px;font-weight:700;color:var(--text)}
+.form-success p{font-size:14px;color:var(--text-muted)}
+
+/* FOOTER */
+footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.03em;color:var(--text)}
+.footer-copy{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);transition:color .2s}
+.footer-links a:hover{color:var(--primary)}
+
+/* ALL PROJECTS PAGE */
+#all-projects-page{display:none;padding-top:80px;min-height:100vh}
+.all-proj-header{padding:64px 0 48px;border-bottom:1px solid var(--border);margin-bottom:56px}
+.all-proj-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-bottom:64px}
+.proj-card{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:all .2s}
+.proj-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.proj-card-img{height:180px;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.proj-card-img .material-symbols-outlined{font-size:36px;color:var(--text-subtle)}
+.proj-card-img span.hint{font-size:11px;color:var(--text-muted)}
+.proj-card-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:10px}
+.proj-card-meta{display:flex;align-items:center;justify-content:space-between}
+.proj-card-year{font-size:12px;color:var(--text-muted)}
+.proj-card-title{font-family:'Manrope',sans-serif;font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.02em;line-height:1.2}
+.proj-card-desc{font-size:13px;color:var(--text-muted);line-height:1.6;flex:1}
+.proj-card-link{display:inline-flex;align-items:center;gap:5px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--primary);margin-top:auto;transition:gap .2s}
+.proj-card-link:hover{gap:9px}
+.back-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:100px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;color:#fff;border:none;cursor:pointer;transition:transform .2s;margin:0 auto;width:fit-content}
+.back-btn:hover{transform:scale(1.04)}
+
+/* PROJECTS - enhanced cards */
+.proj-featured{cursor:pointer}
+.proj-featured:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.proj-img{position:relative}
+.proj-img-badge{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.proj-type-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.proj-featured-md{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .2s;display:flex;flex-direction:column;cursor:pointer}
+.proj-featured-md:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.proj-featured-md-img{height:120px;background:var(--surface2);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--border)}
+.proj-featured-md-img .material-symbols-outlined{font-size:36px;color:var(--text-subtle)}
+.proj-featured-md-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:8px}
+.proj-featured-md .proj-title{font-size:18px}
+.proj-md-grid{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+/* ALL PROJECTS - section group headings */
+.proj-section-label{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin:48px 0 20px;display:flex;align-items:center;gap:10px;grid-column:1/-1}
+.proj-section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.proj-section-label:first-child{margin-top:0}
+
+/* PROJECT DETAIL PAGE */
+#project-detail-page{display:none;padding-top:80px;min-height:100vh;background:var(--bg)}
+.detail-back-bar{padding:24px 0 0}
+.detail-hero{padding:48px 0 40px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.detail-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.detail-title{font-family:'Manrope',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.03em;color:var(--text);line-height:1.1;flex:1}
+.detail-meta{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+.detail-year-badge{background:var(--primary-light);color:#064e3b;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
+.detail-type-badge{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.detail-hero-img{height:400px;background:var(--surface2);border-radius:20px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:24px}
+.detail-hero-img .material-symbols-outlined{font-size:64px;color:var(--text-subtle)}
+.detail-hero-img .hint{font-size:13px;color:var(--text-muted)}
+.detail-hero-img img{width:100%;height:100%;object-fit:contain;border-radius:20px;display:block}
+.detail-hero-img iframe{width:100%;height:100%;border:none}
+.gallery-item{height:120px;border-radius:12px;overflow:hidden;background:var(--surface2)}
+.gallery-item img{width:100%;height:100%;object-fit:contain;display:block}
+.detail-findings{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.detail-finding-card{text-align:center;padding:20px 12px;background:var(--bg);border-radius:14px;border:1px solid var(--border)}
+.detail-finding-stat{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--primary);line-height:1}
+.detail-finding-label{font-size:12px;color:var(--text-muted);margin-top:6px;line-height:1.4}
+.detail-matrix{width:100%;border-collapse:collapse;margin-top:8px}
+.detail-matrix th{background:var(--primary);color:#fff;padding:10px 14px;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.detail-matrix th:first-child{border-radius:8px 0 0 0}
+.detail-matrix th:last-child{border-radius:0 8px 0 0}
+.detail-matrix td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-muted);vertical-align:top}
+.detail-matrix tr:last-child td{border-bottom:none}
+.detail-matrix tr:nth-child(even) td{background:var(--bg)}
+.detail-matrix td:first-child{font-weight:600;color:var(--text)}
+@media(max-width:600px){.detail-findings{grid-template-columns:1fr 1fr}}
+.detail-hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.detail-grid{display:grid;grid-template-columns:65fr 35fr;gap:32px;align-items:start;padding-bottom:80px}
+.detail-portrait-imgs{background:var(--surface2);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;gap:10px;padding:14px}
+.detail-portrait-imgs img{width:100%;height:auto;display:block;border-radius:12px;object-fit:contain}
+.detail-main{display:flex;flex-direction:column;gap:24px}
+.detail-sidebar{display:flex;flex-direction:column;gap:20px;position:sticky;top:84px}
+.detail-section{background:#fff;border:1px solid var(--border);border-radius:20px;padding:28px 32px}
+.detail-section.summary{border-left:4px solid var(--primary);border-radius:0 20px 20px 0}
+.detail-section h3{font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
+.detail-section p{font-size:14px;color:var(--text-muted);line-height:1.8}
+.detail-gallery{background:#fff;border:1px solid var(--border);border-radius:20px;padding:28px 32px}
+.detail-gallery h3{font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);margin-bottom:16px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.gallery-placeholder{height:120px;background:var(--surface2);border-radius:12px;border:1px dashed var(--border2);display:flex;align-items:center;justify-content:center}
+.gallery-placeholder .material-symbols-outlined{font-size:28px;color:var(--text-subtle)}
+.detail-sidebar-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:24px}
+.detail-sidebar-card h4{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+.tech-pills{display:flex;flex-wrap:wrap;gap:8px}
+.tech-pill{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--text)}
+.detail-stat{display:flex;flex-direction:column;gap:4px;padding:12px 0;border-bottom:1px solid var(--border)}
+.detail-stat:last-child{border-bottom:none;padding-bottom:0}
+.detail-stat-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.detail-stat-value{font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;color:var(--text)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-inner{padding:0 20px}
+  .container{padding:0 20px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-photo-wrap{max-width:340px;margin:0 auto}
+  .hero-bg-text{display:none}
+  .hero-pillars{grid-template-columns:1fr}
+  .services-grid,.skills-grid,.about-grid{grid-template-columns:1fr}
+  .contact-links{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr;gap:12px}
+  .form-row{grid-template-columns:1fr}
+  .skills-full{grid-column:1}
+  footer{padding:32px 20px}
+  .proj-md-grid{grid-template-columns:1fr}
+  .detail-grid{grid-template-columns:1fr}
+  .detail-sidebar{position:static}
+  .detail-hero-img{height:220px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="showHome();return false">Piero Tavara</a>
+    <ul class="nav-links" id="nav-links"></ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="nav-cta grad" onclick="scrollToContact()" id="nav-cta-btn"></button>
+    </div>
+  </div>
+</nav>
+
+<div id="home-page">
+
+  <section id="hero" class="dot-bg">
+    <div class="container">
+      <div class="hero-bg-text">SYSTEMS</div>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-h1" id="hero-h1"></h1>
+          <p class="hero-p" id="hero-p"></p>
+          <div class="hero-btns">
+            <button class="btn-primary grad" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+              <span class="material-symbols-outlined" style="font-size:18px">rocket_launch</span>
+              <span id="hero-cta1"></span>
+            </button>
+            <button class="btn-secondary">
+              <span class="material-symbols-outlined" style="font-size:18px">download</span>
+              <span id="hero-cta2"></span>
+            </button>
+          </div>
+          <div class="hero-pillars" id="hero-pillars"></div>
+        </div>
+        <div class="hero-photo-wrap">
+          <div class="hero-deco-tr"></div>
+          <div class="hero-photo">
+            <!-- FOTO: reemplaza este div con: <img src="foto.jpg" alt="Piero Tavara"> -->
+            <div class="photo-placeholder">
+              <span class="material-symbols-outlined">person</span>
+              <p>Tu foto aquí<br><small>Reemplaza con &lt;img src="foto.jpg"&gt;</small></p>
+            </div>
+          </div>
+          <div class="hero-badge">
+            <div class="badge-dot"></div>
+            <span class="badge-text" id="hero-badge-text"></span>
+          </div>
+          <div class="hero-deco-bl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="fade">
+    <div class="container">
+      <div class="services-intro">
+        <div class="section-label"><span class="material-symbols-outlined" style="font-size:14px">handshake</span><span id="s-services-label"></span></div>
+        <h2 class="section-h2" id="s-services-h2"></h2>
+        <p class="section-desc" id="s-services-desc"></p>
+      </div>
+      <div class="services-grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <section id="experience" class="fade">
+    <div class="container">
+      <div style="margin-bottom:56px">
+        <div class="section-label"><span class="material-symbols-outlined" style="font-size:14px">architecture</span><span id="s-exp-label"></span></div>
+        <h2 class="section-h2" id="s-exp-h2"></h2>
+      </div>
+      <div class="exp-timeline" id="exp-grid"></div>
+    </div>
+  </section>
+
+  <section id="projects" class="fade">
+    <div class="container">
+      <div class="projects-header">
+        <div>
+          <div class="section-label"><span class="material-symbols-outlined" style="font-size:14px">rocket_launch</span><span id="s-projects-label"></span></div>
+          <h2 class="section-h2" id="s-projects-h2"></h2>
+        </div>
+        <a href="#" class="see-all" onclick="showProjects();return false" id="s-projects-seeall">
+          <span id="s-projects-seeall-text"></span><span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+        </a>
+      </div>
+      <div class="projects-grid" id="projects-grid"></div>
+      <div class="projects-cta">
+        <a href="#" class="btn-secondary" onclick="showProjects();return false" id="s-projects-viewall-btn" style="display:inline-flex;align-items:center;gap:8px"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="fade">
+    <div class="container">
+      <div style="margin-bottom:56px">
+        <div class="section-label"><span class="material-symbols-outlined" style="font-size:14px">code</span><span id="s-skills-label"></span></div>
+        <h2 class="section-h2" id="s-skills-h2"></h2>
+      </div>
+      <div class="skills-grid" id="skills-grid"></div>
+    </div>
+  </section>
+
+  <section id="about" class="fade">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div>
+            <div class="section-label"><span class="material-symbols-outlined" style="font-size:14px">person</span><span id="s-about-label"></span></div>
+            <h2 class="section-h2" id="s-about-h2"></h2>
+          </div>
+          <p class="about-p" id="s-about-p1"></p>
+          <p class="about-p" id="s-about-p2"></p>
+          <div class="about-btns">
+            <button class="btn-primary grad" onclick="scrollToContact()">
+              <span class="material-symbols-outlined" style="font-size:18px">handshake</span>
+              <span id="s-about-cta1"></span>
+            </button>
+            <button class="btn-secondary">
+              <span class="material-symbols-outlined" style="font-size:18px">download</span>
+              <span id="s-about-cta2"></span>
+            </button>
+          </div>
+        </div>
+        <div class="about-photo">
+          <div class="about-photo-inner">
+            <!-- FOTO: reemplaza con <img src="foto2.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+            <div class="photo-placeholder">
+              <span class="material-symbols-outlined">person</span>
+              <p id="s-about-photolabel"></p>
+            </div>
+          </div>
+          <div class="about-location">
+            <span class="material-symbols-outlined">location_on</span>
+            <span id="s-about-location"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="fade">
+    <div class="container">
+      <div class="contact-solo">
+        <div class="contact-solo-head">
+          <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:100px;background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.2);margin-bottom:20px">
+            <div class="hero-avail-dot"></div>
+            <span style="font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary)" id="s-contact-avail"></span>
+          </div>
+          <h2 class="contact-heading" id="s-contact-h2"></h2>
+          <p class="contact-sub" id="s-contact-desc"></p>
+        </div>
+        <div class="contact-links" id="contact-links"></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="all-projects-page">
+  <div class="container">
+    <div class="all-proj-header">
+      <div class="section-label"><span class="material-symbols-outlined" style="font-size:14px">rocket_launch</span><span id="ap-badge"></span></div>
+      <h1 class="section-h2" id="ap-h1"></h1>
+      <p class="section-desc" id="ap-desc"></p>
+    </div>
+    <div class="all-proj-grid" id="all-proj-grid"></div>
+    <button class="back-btn grad" onclick="showHome()">
+      <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>
+      <span id="ap-back"></span>
+    </button>
+  </div>
+</div>
+
+<div id="project-detail-page">
+  <div class="container">
+    <div class="detail-back-bar">
+      <button class="back-btn grad" onclick="backFromDetail()">
+        <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>
+        <span id="detail-back-label"></span>
+      </button>
+    </div>
+    <div id="detail-content"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">Piero Tavara</span>
+    <span class="footer-copy" id="footer-copy"></span>
+    <div class="footer-links">
+      <a href="mailto:tavarapiero0@gmail.com">Email</a>
+      <a href="https://github.com/Piero-T" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/piero-tavara/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+var T = {
+  es: {
+    navLinks:[['#services','En qu\u00e9 ayudo'],['#experience','Experiencia'],['#projects','Proyectos'],['#skills','Skills'],['#about','Sobre m\u00ed'],['#contact','Contacto']],
+    navCta:'Contactar',
+    hero:{
+      avail:'Disponible para proyectos',
+      h1:'<span class="accent">Transformando</span> procesos operativos en sistemas escalables',
+      p:'Especializado en convertir flujos manuales y complejos en soluciones digitales medibles. Automatizaci\u00f3n, desarrollo full stack y an\u00e1lisis de datos.',
+      cta1:'Ver Proyectos', cta2:'Descargar CV',
+      pillars:[
+        {icon:'settings_suggest',label:'Eficiencia',title:'Eficiencia Operativa',desc:'Maximizaci\u00f3n de recursos mediante automatizaci\u00f3n avanzada para un ROI tangible.'},
+        {icon:'verified_user',label:'Confiabilidad',title:'Integridad de Datos',desc:'Arquitecturas robustas para garantizar consistencia y seguridad en los activos de informaci\u00f3n.'},
+        {icon:'account_tree',label:'Crecimiento',title:'Arquitectura Escalable',desc:'Sistemas modulares preparados para evolucionar con las demandas del mercado.'}
+      ]
+    },
+    services:{
+      label:'En qu\u00e9 puedo ayudarte',
+      h2:'\u00bfTienes un proceso que <span class="accent">se puede mejorar?</span>',
+      desc:'No solo escribo código: entiendo el problema, dise\u00f1o la soluci\u00f3n y garantizo que el equipo la adopte.',
+      items:[
+        {icon:'smart_toy',title:'Automatizaci\u00f3n de procesos',desc:'Convierto tareas manuales repetitivas en flujos autom\u00e1ticos. Resultado t\u00edpico: 40\u201390% de ahorro de tiempo.',tags:['Python','Power Automate','UiPath','Apps Script']},
+        {icon:'code',title:'Desarrollo de aplicaciones',desc:'Construyo aplicaciones web y m\u00f3viles funcionales: MVPs, sistemas internos e integraciones entre plataformas.',tags:['React','Node.js','Java','Kotlin']},
+        {icon:'monitoring',title:'Dashboards y anal\u00edtica',desc:'Transformo grandes vol\u00famenes de datos en reportes visuales y KPIs para decisiones en tiempo real.',tags:['Power BI','Looker Studio','SQL','Excel']}
+      ]
+    },
+    projects:{
+      label:'Proyectos destacados',
+      h2:'Lo que he <span class="accent">construido.</span>',
+      seeAll:'Ver todos los proyectos',
+      viewDetail:'Ver detalles',
+      viewAll:'Ver todos los proyectos',
+      featured:[
+        {id:'arch-2d-3d',title:'Prototipo de Reconstrucci\u00f3n Arquitect\u00f3nica 2D a 3D',type:'Prototipo de Investigaci\u00f3n',year:'2026',icon:'architecture',desc:'Prototipo que convierte planos arquitect\u00f3nicos 2D en modelos 3D usando visi\u00f3n por computador y estimaci\u00f3n de profundidad. Desarrollado para investigaci\u00f3n de tesis en curso.',tags:['Python','Computer Vision','Open3D'],stack:['Python','OpenCV','Open3D','NumPy','Matplotlib'],cols:8,images:['images/Architectural 2D-to-3D/wallsup0.JPG','images/Architectural 2D-to-3D/wallsup1.JPG','images/Architectural 2D-to-3D/wallsup 3.png','images/Architectural 2D-to-3D/walssup4.png'],detail:{summary:'Prototipo de investigaci\u00f3n que explora la conversi\u00f3n autom\u00e1tica de planos arquitect\u00f3nicos 2D en representaciones tridimensionales usando t\u00e9cnicas de visi\u00f3n por computador.',problem:'Los arquitectos destinan horas a la modelaci\u00f3n 3D manual a partir de planos existentes. El proceso es costoso, lento y propenso a errores de interpretaci\u00f3n entre equipos t\u00e9cnicos.',objective:'Demostrar la viabilidad t\u00e9cnica de automatizar la conversi\u00f3n de planos 2D en modelos 3D navegables, estableciendo una base s\u00f3lida para investigaci\u00f3n posterior.',role:'Dise\u00f1\u00e9 la arquitectura del sistema, implement\u00e9 los algoritmos de detecci\u00f3n y segmentaci\u00f3n, y desarroll\u00e9 el pipeline de conversi\u00f3n 3D completo.',technical:'OpenCV detecta y segmenta elementos arquitect\u00f3nicos (paredes, puertas, ventanas) mediante detecci\u00f3n de contornos. Reglas heur\u00edsticas extruyen los elementos en el eje Z. Open3D genera la malla 3D exportable.',challenges:'La variabilidad en estilos de planos - diferentes convenciones gr\u00e1ficas, escalas y calidades de escaneo - requiri\u00f3 pipelines de preprocesamiento adaptativos para normalizar la entrada.',outcome:'Prototipo funcional que convierte planos simples en 15-30 segundos con una tasa de detecci\u00f3n del 78%. Validado con 12 planos de referencia. Investigaci\u00f3n en curso, a\u00fan no presentada formalmente.',lessons:'La robustez ante variaciones de entrada es el mayor reto en visi\u00f3n por computador aplicada. Los datos de dominio espec\u00edfico son cr\u00edticos. Los prototipos tempranos validan hip\u00f3tesis antes de invertir en modelos complejos.',screenshotCount:3}},
+        {id:'gov-procurement',title:'An\u00e1lisis de Inteligencia en Contrataci\u00f3n P\u00fablica',type:'Sistema de Inteligencia',year:'2026',icon:'policy',desc:'Sistema de inteligencia end-to-end que extrae, consolida, filtra y categoriza con IA oportunidades de contrataci\u00f3n p\u00fablica de decenas de entidades gubernamentales peruanas.',tags:['Python','OpenAI API','BeautifulSoup'],stack:['Python','requests','BeautifulSoup','pandas','openpyxl','OpenAI API','Data Analysis'],cols:4,thumbnail:'images/Government Procurement Intelligence Analysis/preview.JPG',images:['images/Government Procurement Intelligence Analysis/pac_dashboard_portfolio.html'],detail:{summary:'Sistema de inteligencia de compras que extrae, consolida, filtra y categoriza con IA las oportunidades de contrataci\u00f3n p\u00fablica de decenas de entidades gubernamentales peruanas. Entregué un panel de inteligencia priorizado, diseñado para adaptarse al flujo de trabajo del equipo de consultoría.',problem:'El equipo de consultor\u00eda revisaba manualmente los portales de contrataci\u00f3n p\u00fablica diariamente, un flujo lento y propenso a errores que dificultaba la priorizaci\u00f3n y aumentaba el riesgo de perder plazos. El creciente volumen de registros en m\u00faltiples entidades hac\u00eda el an\u00e1lisis sistem\u00e1tico cada vez m\u00e1s impracticable.',objective:'Automatizar el pipeline completo desde la extracci\u00f3n de contrataciones hasta la priorizaci\u00f3n de oportunidades, reduciendo el esfuerzo manual y mejorando la identificaci\u00f3n de oportunidades estrat\u00e9gicamente relevantes mediante an\u00e1lisis de datos y categorizaci\u00f3n asistida por IA.',role:'Desarrollador y consultor \u00fanico responsable de la arquitectura del sistema, flujos de extracci\u00f3n, l\u00f3gica de clasificaci\u00f3n con IA, generaci\u00f3n de reportes, comunicaci\u00f3n con el cliente y validaci\u00f3n iterativa basada en sesiones de feedback. Tambi\u00e9n gestion\u00e9 la propuesta del proyecto, negociaci\u00f3n de precios y coordinaci\u00f3n de entrega.',technical:'Desarroll\u00e9 un scraper con sesi\u00f3n usando Python, requests y BeautifulSoup para extraer datos PAC de portales gubernamentales. Implement\u00e9 scoring por palabras clave, matching difuso de entidades, categorizaci\u00f3n con GPT-4o mini y pipelines de reportes con openpyxl. El entregable final inclu\u00eda oportunidades categorizadas, indicadores de urgencia y dashboards resumen.',challenges:'El principal reto t\u00e9cnico fue manejar portales JSF con estado, donde solicitudes intermedias ocultas eran necesarias para inicializar sesiones de entidad antes de que las descargas estuvieran disponibles. La normalizaci\u00f3n de nombres de entidades inconsistentes entre datasets requiri\u00f3 estrategias de matching difuso y reglas de validaci\u00f3n manual.',outcome:'Entregué un panel de inteligencia validado que permiti\u00f3 al equipo identificar oportunidades de alta prioridad de forma m\u00e1s eficiente y respald\u00f3 la continuaci\u00f3n del proyecto en una segunda fase enfocada en monitoreo.',lessons:'Este proyecto reforz\u00f3 la importancia de estrategias de scraping conscientes de la sesi\u00f3n, normalizaci\u00f3n robusta de datos, y combinar filtrado por reglas con categorizaci\u00f3n asistida por IA para reducir falsos positivos en grandes datasets.',screenshotCount:3}},
+        {id:'recruitment-ngr',title:'Autocaller Android',type:'Aplicación Android',year:'2026',icon:'phone_in_talk',portrait:true,desc:'Prototipo funcional de aplicativo Android para optimizar reclutamiento masivo mediante marcación automatizada y gestión de contactos desde bases de datos locales.',tags:['Kotlin','Android','Automatización'],stack:['Kotlin','Android SDK','Material Design 3','SharedPreferences'],cols:4,images:['images/simple caller app/Screenshot_20260508_122634.png'],detail:{summary:'Prototipo funcional de un aplicativo Android desarrollado para optimizar flujos de reclutamiento masivo mediante marcación automatizada y gestión de contactos desde bases de datos locales.',problem:'En campañas masivas, los reclutadores pierden entre 2 y 3 horas diarias marcando números manualmente y transcribiendo notas. El proceso es agotador, propenso a errores de digitación y dificulta el seguimiento de indicadores en tiempo real.',objective:'Automatizar la logística de llamadas para maximizar la capacidad de contacto diario y centralizar la recolección de datos en una interfaz móvil eficiente.',role:'Identifiqué el cuello de botella operativo, diseñé la interfaz de usuario y desarrollé la lógica completa del aplicativo, liderando además la implementación del piloto con el equipo de reclutamiento.',technical:'Kotlin y Android SDK. Implementación de ACTION_CALL para marcación directa y retorno automático a la app. Motor de procesamiento de CSV para lectura de bases de datos de contactos y persistencia local de notas mediante SharedPreferences.',challenges:'La variabilidad en el formato de los archivos de origen, con distintos delimitadores y codificación de caracteres como Ñ o tildes, requirió desarrollar un parser robusto y funciones de limpieza de datos para normalizar la entrada.',outcome:'Incremento del 125% en productividad individual, pasando de un promedio de 80 a 180 llamadas por turno. Se alcanzó un pico récord de 45 entrevistas agendadas en un solo día. Actualmente en fase piloto para equipos internos y externos.',lessons:'La optimización de micro-interacciones, ahorrando 10 segundos por llamada, genera un impacto masivo en tareas de alto volumen. Una solución 100% local elimina barreras de adopción corporativa relacionadas con privacidad de datos.',screenshotCount:1}},
+        {id:'habit-tracker',title:'App de Gesti\u00f3n de H\u00e1bitos',type:'Aplicaci\u00f3n M\u00f3vil',year:'2025',icon:'check_circle',portrait:true,desc:'App m\u00f3vil con CRUD completo, sistema de pasos configurables, edici\u00f3n en l\u00ednea e importaci\u00f3n y exportaci\u00f3n de rutinas en formato JSON.',tags:['React Native','Node.js','SQLite'],stack:['React Native','Node.js','SQLite','Expo','AsyncStorage'],cols:4,images:['images/habits app/app1.png','images/habits app/Screenshot_20260507_160213.png','images/habits app/Screenshot_20260507_160612.png'],detail:{summary:'Aplicaci\u00f3n m\u00f3vil para el seguimiento de h\u00e1bitos diarios con sistema de pasos configurables, visualizaci\u00f3n de progreso e importaci\u00f3n y exportaci\u00f3n de rutinas.',problem:'Las apps de h\u00e1bitos existentes son demasiado simples o sobrecargadas. Los usuarios necesitan configurar h\u00e1bitos multi-paso con la menor fricci\u00f3n posible.',objective:'Crear una aplicaci\u00f3n m\u00f3vil intuitiva que permita definir h\u00e1bitos con pasos, hacer seguimiento diario del progreso y compartir rutinas mediante exportaci\u00f3n de datos.',role:'Dise\u00f1\u00e9 la arquitectura, implement\u00e9 el frontend con React Native, la persistencia con SQLite y las funcionalidades de importaci\u00f3n y exportaci\u00f3n en JSON.',technical:'React Native con Expo para compatibilidad iOS/Android. Persistencia local con Expo SQLite. Sistema de pasos con estructura jer\u00e1rquica. Importaci\u00f3n/exportaci\u00f3n JSON v\u00eda sistema de archivos.',challenges:'La sincronizaci\u00f3n del estado de la UI con los cambios en la base de datos local present\u00f3 retos de consistencia, especialmente en el modo de edici\u00f3n en l\u00ednea.',outcome:'Aplicaci\u00f3n funcional con m\u00e1s de 15 funcionalidades implementadas. Flujo de usuario validado con pruebas reales. Exportaci\u00f3n e importaci\u00f3n funcionando en ambas plataformas.',lessons:'El dise\u00f1o del modelo de datos es crucial antes de escribir UI. Las pruebas con usuarios reales tempranas evitan redise\u00f1os costosos.',screenshotCount:4}},
+        {id:'ai-social-skills',title:'IA para Habilidades Sociales - Tesis',type:'Proyecto de Tesis',year:'2025',icon:'psychology',images:['images/tesis/maqueta.png','images/tesis/arquitectura.JPG'],portrait:true,desc:'Sistema de IA con visi\u00f3n por computador para reconocimiento de expresiones faciales y NLP para comunicaci\u00f3n. Orientado a ni\u00f1os con TEA.',tags:['Computer Vision','NLP','Python'],stack:['Python','TensorFlow','OpenCV','NLTK','Flask'],cols:4,detail:{summary:'Propuesta de tesis que dise\u00f1a un sistema de IA para asistir el desarrollo de habilidades sociales en ni\u00f1os con TEA, combinando reconocimiento de expresiones faciales y NLP.',problem:'Los ni\u00f1os con TEA presentan dificultades para reconocer expresiones emocionales y mantener conversaciones socialmente apropiadas. Las terapias convencionales tienen alcance limitado y alto costo.',objective:'Dise\u00f1ar un sistema de IA que sirva como herramienta de apoyo terap\u00e9utico, con feedback en tiempo real sobre reconocimiento emocional y comunicaci\u00f3n para ni\u00f1os con TEA.',role:'Desarroll\u00e9 el proyecto en dupla. Junto a mi compa\u00f1ero redactamos la propuesta de investigaci\u00f3n, dise\u00f1amos la arquitectura del sistema, revisamos 47 art\u00edculos de literatura relacionada y elaboramos el plan metodol\u00f3gico.',technical:'M\u00f3dulo de visi\u00f3n con OpenCV y TensorFlow para detecci\u00f3n y clasificaci\u00f3n de expresiones faciales en tiempo real. M\u00f3dulo NLP con NLTK para an\u00e1lisis de patrones de comunicaci\u00f3n. Interfaz web Flask.',challenges:'Obtener datos de entrenamiento \u00e9ticos y representativos de poblaci\u00f3n con TEA. La evaluaci\u00f3n de impacto cl\u00ednico requiere coordinaci\u00f3n con instituciones y aprobaci\u00f3n de comit\u00e9s de \u00e9tica.',outcome:'Propuesta aprobada. Revisi\u00f3n sistem\u00e1tica completada con 47 art\u00edculos analizados. Prototipo conceptual documentado y arquitectura t\u00e9cnica validada por asesores acad\u00e9micos.',lessons:'La investigaci\u00f3n interdisciplinaria requiere colaboraci\u00f3n con expertos cl\u00ednicos. Las consideraciones \u00e9ticas en IA para poblaciones vulnerables deben ser centrales desde el dise\u00f1o.',screenshotCount:2}}
+      ],
+      additional:[
+        {id:'autism-lit-review',title:'Revisión Sistemática sobre Terapias para Autismo Asistidas por Tecnología',type:'Revisión Académica',year:'2025',icon:'menu_book',thumbnail:'images/autism lit review/preview.JPG',thumbPosition:'top',images:[],desc:'Estudio comparativo que analiza intervenciones asistidas por tecnología frente a enfoques terapéuticos tradicionales para el desarrollo de habilidades sociales en personas con trastorno del espectro autista.',tags:['Investigación','Análisis Comparativo','TEA'],stack:['Academic Research','Literature Review','Comparative Analysis','Data Synthesis','Autism Technology Research'],cols:6,detail:{summary:'Estudio de investigación comparativa que analiza intervenciones asistidas por tecnología frente a enfoques terapéuticos tradicionales para el desarrollo de habilidades sociales y emocionales en personas con trastorno del espectro autista.',problem:'Las terapias para el autismo asistidas por tecnología han crecido rápidamente en los últimos años, incluyendo intervenciones basadas en realidad virtual, realidad aumentada, robótica y sistemas asistidos por IA. Sin embargo, comprender cómo estos enfoques se comparan con los métodos terapéuticos tradicionales sigue siendo un desafío de investigación significativo.',objective:'Realizar una revisión sistemática de literatura para identificar, clasificar y comparar intervenciones terapéuticas asistidas por tecnología frente a enfoques tradicionales en el desarrollo de habilidades sociales relacionadas con el autismo.',role:'Responsable de la planificación de la investigación, selección de estudios, clasificación de artículos, análisis comparativo, síntesis de hallazgos, y documentación de limitaciones, sesgos y desafíos de implementación en los estudios revisados.',technical:'La revisión analizó estudios académicos sobre intervenciones para el autismo asistidas por tecnología, incluyendo enfoques basados en realidad aumentada, realidad virtual, robótica, sistemas asistidos por IA y tecnologías educativas interactivas. El análisis comparó resultados terapéuticos, desafíos de implementación, adaptabilidad, accesibilidad y limitaciones reportadas en los estudios.',challenges:'Las limitaciones más comunes identificadas en los estudios revisados incluyeron muestras pequeñas de participantes, falta de validación a largo plazo, desafíos de accesibilidad, limitaciones de infraestructura, formación profesional insuficiente, y dificultades para generalizar resultados en contextos diversos.',outcome:'La revisión proporcionó una comprensión estructurada de las tendencias actuales, limitaciones y oportunidades en terapias para el autismo asistidas por tecnología, apoyando también la base conceptual para futuros sistemas educativos asistidos por IA.',lessons:'El proyecto reforzó la importancia del análisis basado en evidencia al diseñar intervenciones tecnológicas centradas en el ser humano, especialmente en dominios sensibles como el apoyo al autismo y el desarrollo de habilidades sociales.',screenshotCount:0,keyFindings:[{stat:'83.5%',label:'Precisión de reconocimiento facial'},{stat:'86%',label:'Mejora en interacción social'},{stat:'AR + Robótica',label:'Mayor potencial de compromiso'}],comparisonMatrix:{headerAspect:'Aspecto',headerTrad:'Terapias Tradicionales',headerTech:'Terapias Asistidas por Tecnología',rows:[['Interacción','Dependiente del terapeuta','Más interactividad y retroalimentación inmediata'],['Personalización','Adaptación manual','Potencial de adaptación dinámica y personalizada'],['Accesibilidad','Limitada por ubicación y disponibilidad','Posibilidad de acceso remoto o digital'],['Engagement','Puede variar según el entorno','Mayor estímulo visual e interacción'],['Escalabilidad','Difícil de escalar','Potencial para llegar a más usuarios'],['Validación','Métodos más consolidados','Aún requiere más estudios a largo plazo'],['Infraestructura','Menor dependencia tecnológica','Requiere conectividad y recursos tecnológicos'],['Capacitación','Basada en experiencia clínica','Requiere formación técnica adicional']]}}},
+        {id:'windows-macro',title:'Grabador de Macros - Desktop',type:'Herramienta de Escritorio',year:'2025',icon:'terminal',desc:'Herramienta de escritorio para grabar y reproducir macros de teclado y mouse, con interfaz gráfica moderna. Automatiza tareas repetitivas en cualquier aplicación sin depender de software externo.',tags:['Python','pynput','tkinter'],stack:['Python','pynput','tkinter','JSON'],cols:3,images:['images/windows macro/macro.JPG'],detail:{summary:'Herramienta de escritorio para grabar y reproducir macros de teclado y mouse, con interfaz gráfica moderna. Permite automatizar tareas repetitivas en cualquier aplicación sin depender de software externo.',problem:'Muchas tareas de productividad implican repetir la misma secuencia de clics y teclas decenas de veces. Las soluciones existentes son pesadas, de pago o requieren configuración compleja.',objective:'Crear una herramienta ligera, portable y de uso inmediato que grabe interacciones reales y las reproduzca con precisión, incluyendo tiempos entre acciones.',role:'Diseñé e implementé el proyecto completo: lógica de grabación y reproducción, manejo de hilos para no bloquear la interfaz, y la GUI con tema oscuro.',technical:'pynput captura eventos globales de teclado y mouse en tiempo real. Los eventos se serializan en JSON con timestamps relativos para reproducción proporcional. Un sanitizador normaliza teclas de control (Ctrl+C, Ctrl+V, etc.) que pynput representa como caracteres de escape. La GUI está construida con tkinter y corre la lógica en hilos separados para mantener la interfaz responsiva.',challenges:'El principal reto fue el manejo de teclas especiales: combinaciones como Ctrl+W se registran como caracteres de escape y necesitaban normalizarse antes de reproducirse. También fue necesario separar la lógica de input del hilo principal para evitar que la GUI se congelara durante la grabación.',outcome:'Herramienta funcional de uso diario para automatizar flujos repetitivos. Portable, sin instaladores, ejecutable directamente con Python.',lessons:'Los listeners globales de input requieren aislamiento cuidadoso en hilos separados. La sincronización entre la GUI y procesos en background es tan importante como la lógica principal. La simplicidad técnica bien ejecutada resuelve problemas reales sin over-engineering.',screenshotCount:1}},
+        {id:'excel-recruitment',title:'Sesiones de Capacitaci\u00f3n Excel \u2014 RRHH',type:'Capacitaci\u00f3n',year:'2025',icon:'table_chart',desc:'Dise\u00f1\u00e9 y dict\u00e9 sesiones de capacitaci\u00f3n en Excel avanzado para profesionales de distintas \u00e1reas de RRHH, con foco en la elaboraci\u00f3n de reportes para jefaturas.',tags:['Excel','Power Query','RRHH'],stack:['Microsoft Excel','Power Query','VBA','Power BI'],cols:3,images:['images/clases excel/dashboard.svg'],detail:{summary:'Dise\u00f1\u00e9 y dict\u00e9 un programa de capacitaci\u00f3n en Excel para profesionales de distintas \u00e1reas de RRHH, cubriendo funciones avanzadas, tablas din\u00e1micas, Power Query y automatizaci\u00f3n de reportes para jefaturas.',problem:'Profesionales de distintas \u00e1reas de RRHH utilizaban Excel de manera b\u00e1sica, desaprovechando funcionalidades que pod\u00edan ahorrar horas semanales y mejorar la calidad de reportes entregados a sus jefaturas.',objective:'Elevar el nivel de competencia en Excel de los participantes, con foco en la construcci\u00f3n y automatizaci\u00f3n de reportes gerenciales adaptados a cada \u00e1rea de RRHH.',role:'Dise\u00f1\u00e9 el curr\u00edculum, elabor\u00e9 materiales y ejercicios pr\u00e1cticos con datos reales del equipo, impart\u00ed las sesiones y realic\u00e9 seguimiento de adopci\u00f3n.',technical:'Programa de 4 sesiones: (1) Funciones avanzadas (VLOOKUP, INDEX-MATCH, XLOOKUP); (2) Tablas din\u00e1micas; (3) Power Query para transformaci\u00f3n de datos; (4) Macros VBA b\u00e1sicas.',challenges:'Los distintos niveles previos en el equipo requirieron adaptar el ritmo. Mantener inter\u00e9s en sesiones t\u00e9cnicas requiri\u00f3 usar casos reales del trabajo cotidiano como ejemplos.',outcome:'Los profesionales mejoraron notablemente su manejo de Excel, logrando construir reportes m\u00e1s claros y eficientes para sus jefaturas. Redujeron el tiempo de elaboraci\u00f3n de reportes semanales y adoptaron tablas din\u00e1micas y Power Query como herramientas habituales en su trabajo.',lessons:'La capacitaci\u00f3n es m\u00e1s efectiva con datos reales del participante. El seguimiento post-capacitaci\u00f3n es clave para la adopci\u00f3n. Dar recursos de referencia supera al tutorial paso a paso.',screenshotCount:2}}
+      ]
+    },
+    experience:{
+      label:'Experiencia',
+      h2:'Donde he <span class="accent">generado impacto.</span>',
+      roles:[
+        {date:'Abr. 2026 - Actualidad',badge:'Activo',badgeClass:'active',icon:'smart_toy',role:'Desarrollador de Automatizaci\u00f3n e Inteligencia de Compras',co:'RCR Consultores S.A.C. | Consultor\u00eda independiente',bullets:['Lidero integralmente el proyecto: arquitectura t\u00e9cnica, validaci\u00f3n iterativa con cliente, levantamiento de requerimientos, propuesta econ\u00f3mica y coordinaci\u00f3n de entregables.','Dise\u00f1o e implemento un sistema de inteligencia de compras para automatizar la extracci\u00f3n, consolidaci\u00f3n y priorizaci\u00f3n de oportunidades de contrataci\u00f3n p\u00fablica de m\u00faltiples entidades gubernamentales peruanas.','Desarrollo pipelines de scraping con Python, Requests y BeautifulSoup para portales gubernamentales con manejo de sesiones y flujos JSF con estados intermedios.','Implemento clasificaci\u00f3n y scoring autom\u00e1tico de oportunidades mediante IA (GPT-4o mini), matching difuso de entidades y filtros por palabras clave para reducir falsos positivos.','Los reportes entregados permiten al equipo tomar decisiones de forma m\u00e1s r\u00e1pida y con mayor confianza, reduciendo el riesgo de perder propuestas por falta de tiempo o errores en el filtrado manual.'],tags:['Python','OpenAI API','BeautifulSoup','OpenPyXL','Scraping']},
+        {date:'Mar 2026',badge:'Completado',badgeClass:'done',icon:'restaurant',role:'Asistente de Automatizaci\u00f3n y Reclutamiento',co:'Servicios Compartidos de Restaurantes S.A. (NGR)',bullets:['Desarroll\u00e9 una aplicaci\u00f3n interna para optimizar la gesti\u00f3n de llamadas y seguimiento de candidatos en reclutamiento masivo.','Automatic\u00e9 el registro y organizaci\u00f3n de datos de postulantes, mejorando la trazabilidad del proceso de selecci\u00f3n.','Entregu\u00e9 una soluci\u00f3n funcional para uso interno en menos de 2 semanas.'],tags:['Python','Full Stack','Automatizaci\u00f3n']},
+        {date:'Sep 2025 - Feb 2026',badge:'Completado',badgeClass:'done',icon:'school',role:'Practicante Profesional de An\u00e1lisis de Datos y Automatizaci\u00f3n',co:'UTEC',bullets:['Automatic\u00e9 la validaci\u00f3n y preparaci\u00f3n de datos en procesos de migraci\u00f3n ERP, asegurando integridad y cumplimiento de reglas de negocio.','Dise\u00f1\u00e9 scripts para detectar inconsistencias entre sistemas, reduciendo riesgos operativos antes del despliegue en producci\u00f3n.','Implement\u00e9 controles automatizados para validar flujos de datos entre sistemas integrados.','Dise\u00f1\u00e9 dashboards de monitoreo para identificar incidencias y desviaciones en procesos cr\u00edticos.'],tags:['Python','Apps Script','Power BI','SQL','ERP']},
+        {date:'Feb 2025 - Sep 2025',badge:'Completado',badgeClass:'done',icon:'factory',role:'Practicante Pre Profesional de People Analytics',co:'Trupal S.A.',bullets:['Dise\u00f1\u00e9 e implement\u00e9 procesos ETL automatizados con UiPath, asegurando correcta extracci\u00f3n, transformaci\u00f3n y carga de datos.','Desarroll\u00e9 macros en Excel con validaciones y controles de consistencia para reducir errores en registros y reportes.','Implement\u00e9 scripts en Python para depuraci\u00f3n y validaci\u00f3n de datos para an\u00e1lisis por indicadores clave.'],tags:['UiPath','Python','Excel','ETL','Power BI']}
+      ]
+    },
+    skills:{
+      label:'Skills y tecnolog\u00edas',
+      h2:'Mi stack <span class="accent">t\u00e9cnico.</span>',
+      progTitle:'Programaci\u00f3n & Desarrollo',
+      progItems:['Python','Java','JavaScript','SQL','C#','Kotlin','Ruby','PHP','React.js','Node.js','Angular','Apps Script'],
+      softTitle:'Habilidades blandas',
+      softItems:['Pensamiento anal\u00edtico','Aprendizaje \u00e1gil','Comunicaci\u00f3n efectiva','Orientaci\u00f3n a impacto','Trabajo en equipo'],
+      autoTitle:'Automatizaci\u00f3n, IA & Datos',
+      autoItems:['OpenAI API','LLMs','Prompt Engineering','Computer Vision','Power Automate','UiPath','Apps Script','Power BI','Looker Studio','Excel avanzado','APIs REST','ETL','Testing funcional','TDD','Scrum','Git / GitHub','Jira','Trello'],
+      eduLabel:'Formaci\u00f3n',eduTitle:'Ingenier\u00eda de Software',eduSub:'Universidad Tecnol\u00f3gica del Per\u00fa (UTP)',eduYear:'2026',eduYearLbl:'Bachiller'
+    },
+    about:{
+      label:'Sobre m\u00ed',
+      h2:'M\u00e1s all\u00e1 del <span class="accent">c\u00f3digo.</span>',
+      p1:'Soy de Lima, Per\u00fa. Bachiller en Ingenier\u00eda de Software por la UTP desde 2026, y desde entonces he trabajado en entornos corporativos reales donde el impacto se mide en tiempo ahorrado y procesos transformados.',
+      p2:'Me motiva encontrar el punto donde la tecnolog\u00eda resuelve un problema real de negocio, no porque sea t\u00e9cnicamente interesante, sino porque simplifica la vida de las personas que trabajan con eso todos los d\u00edas.',
+      cta1:'Colaboremos',cta2:'Descargar CV',photoLabel:'Tu foto aqu\u00ed',location:'Lima, Per\u00fa \u00b7 Remote OK'
+    },
+    contact:{
+      avail:'Disponible ahora',
+      h2:'\u00bfListo para transformar tus <span class="accent">procesos?</span>',
+      desc:'Disponible para automatizaci\u00f3n, desarrollo o consultor\u00eda. Respondo en menos de 24 horas.',
+      links:[
+        {icon:'alternate_email',label:'Email',val:'tavarapiero0@gmail.com',href:'mailto:tavarapiero0@gmail.com',bg:'#a7f3d0',color:'#064e3b'},
+        {icon:'chat',label:'WhatsApp',val:'+51 958 483 192',href:'https://web.whatsapp.com/send?phone=51958483192',bg:'#dcfce7',color:'#15803d'},
+        {icon:'link',label:'LinkedIn',val:'linkedin.com/in/piero-tavara',href:'https://www.linkedin.com/in/piero-tavara/',bg:'#a3ebfd',color:'#1a6c7c'},
+        {icon:'code',label:'GitHub',val:'github.com/Piero-T',href:'https://github.com/Piero-T',bg:'#e2e8f0',color:'#475569'}
+      ],
+      formTitle:'Env\u00edame un mensaje',
+      nameLbl:'Nombre',namePh:'Tu nombre',
+      emailLbl:'Email',emailPh:'tu@email.com',
+      msgLbl:'Mensaje',msgPh:'Cu\u00e9ntame sobre tu proyecto...',
+      send:'Enviar',sentTitle:'\u00a1Mensaje enviado!',sentDesc:'Te respondo en menos de 24h.'
+    },
+    allProjects:{
+      badge:'Todos los proyectos',h1:'Proyectos.',desc:'Automatizaci\u00f3n, desarrollo web, IA y m\u00e1s. Cada proyecto resuelve un problema real.',
+      back:'Volver al inicio',see:'Ver detalles',
+      featuredLabel:'Proyectos Destacados',
+      additionalLabel:'Proyectos Adicionales'
+    },
+    projectDetail:{
+      back:'Volver',
+      summaryLabel:'Resumen',
+      problemLabel:'Problema / Contexto',
+      objectiveLabel:'Objetivo',
+      roleLabel:'Mi Rol',
+      technicalLabel:'Detalles T\u00e9cnicos',
+      keyFindingsLabel:'Hallazgos Clave',
+      comparisonLabel:'An\u00e1lisis Comparativo',
+      challengesLabel:'Desaf\u00edos',
+      outcomeLabel:'Resultado / Impacto',
+      galleryLabel:'Capturas / Galer\u00eda',
+      lessonsLabel:'Lecciones Aprendidas',
+      techStackLabel:'Stack Tecnol\u00f3gico',
+      projectTypeLabel:'Tipo de Proyecto',
+      yearLabel:'A\u00f1o'
+    },
+    footer:'\u00a9 2026 Piero Tavara \u00b7 Lima, Per\u00fa'
+  },
+  en: {
+    navLinks:[['#services','How I help'],['#experience','Experience'],['#projects','Projects'],['#skills','Skills'],['#about','About'],['#contact','Contact']],
+    navCta:'Contact',
+    hero:{
+      avail:'Available for projects',
+      h1:'<span class="accent">Transforming</span> operational processes into scalable systems',
+      p:'Specialized in turning manual and complex workflows into measurable digital solutions. Process automation, full stack development and data analytics.',
+      cta1:'View Projects',cta2:'Download CV',
+      pillars:[
+        {icon:'settings_suggest',label:'Efficiency',title:'Operational Efficiency',desc:'Maximizing resources through advanced automation and process optimization for tangible ROI.'},
+        {icon:'verified_user',label:'Reliability',title:'Data Integrity',desc:'Robust architectures ensuring consistency, security and trust in information assets.'},
+        {icon:'account_tree',label:'Growth',title:'Scalable Architecture',desc:'Modular and resilient systems prepared to evolve with dynamic market demands.'}
+      ]
+    },
+    services:{
+      label:'How I can help you',
+      h2:'Do you have a process that <span class="accent">can be improved?</span>',
+      desc:"I don't just write code. I understand the problem, design the solution and make sure the team adopts it.",
+      items:[
+        {icon:'smart_toy',title:'Process Automation',desc:'I turn repetitive manual tasks into automatic flows. Typical result: 40–90% time savings.',tags:['Python','Power Automate','UiPath','Apps Script']},
+        {icon:'code',title:'App Development',desc:'I build functional web and mobile applications: MVPs, internal tools and integrations between platforms.',tags:['React','Node.js','Java','Kotlin']},
+        {icon:'monitoring',title:'Dashboards & Analytics',desc:'I transform large data volumes into visual reports and KPI dashboards for real-time decisions.',tags:['Power BI','Looker Studio','SQL','Excel']}
+      ]
+    },
+    projects:{
+      label:'Featured projects',
+      h2:"What I've <span class='accent'>built.</span>",
+      seeAll:'See all projects',
+      viewDetail:'View details',
+      viewAll:'See all projects',
+      featured:[
+        {id:'arch-2d-3d',title:'Architectural 2D-to-3D Reconstruction Prototype',type:'Research Prototype',year:'2026',icon:'architecture',desc:'Prototype that converts 2D architectural floor plans into 3D models using computer vision and depth estimation techniques.',tags:['Python','Computer Vision','Open3D'],stack:['Python','OpenCV','Open3D','NumPy','Matplotlib'],cols:8,images:['images/Architectural 2D-to-3D/wallsup0.JPG','images/Architectural 2D-to-3D/wallsup1.JPG','images/Architectural 2D-to-3D/wallsup 3.png','images/Architectural 2D-to-3D/walssup4.png'],detail:{summary:'Research prototype that explores the automatic conversion of 2D architectural floor plans into three-dimensional representations using computer vision and image processing techniques.',problem:'Architects spend significant hours on manual 3D modeling from existing plans. The process is costly, slow and prone to interpretation errors between technical teams.',objective:'Demonstrate the technical feasibility of automating the conversion of 2D plans into navigable 3D models, establishing a solid foundation for further research.',role:'Designed the system architecture, implemented detection and segmentation algorithms, and developed the complete 3D conversion pipeline.',technical:'OpenCV detects and segments architectural elements (walls, doors, windows) via contour detection. Heuristic rules extrude elements on the Z axis. Open3D generates the exportable 3D mesh.',challenges:'Variability in floor plan styles - different graphic conventions, scales and scan qualities - required adaptive preprocessing pipelines to normalize input.',outcome:'Functional prototype converting simple plans in 15-30 seconds with a 78% element detection rate. Validated with 12 reference plans. Research is ongoing and has not been formally submitted yet.',lessons:'Robustness to input variations is the biggest challenge in applied computer vision. Domain-specific data is critical. Early prototypes validate hypotheses before investing in complex models.',screenshotCount:3}},
+        {id:'gov-procurement',title:'Government Procurement Intelligence Analysis',type:'Intelligence System',year:'2026',icon:'policy',desc:'End-to-end procurement intelligence system that scraped, consolidated, AI-categorized and prioritized public procurement opportunities from dozens of Peruvian government entities.',tags:['Python','OpenAI API','BeautifulSoup'],stack:['Python','requests','BeautifulSoup','pandas','openpyxl','OpenAI API','Data Analysis'],cols:4,thumbnail:'images/Government Procurement Intelligence Analysis/preview.JPG',images:['images/Government Procurement Intelligence Analysis/pac_dashboard_portfolio.html'],detail:{summary:'Built an end-to-end procurement intelligence system that scraped, consolidated, filtered, and AI-categorized public procurement opportunities from dozens of Peruvian government entities. Delivered a prioritized intelligence panel tailored to fit directly into the operational workflow of the consulting team.',problem:'The consulting team manually reviewed public procurement portals daily to identify relevant opportunities - a slow and error-prone workflow that made prioritization difficult and increased the risk of missed deadlines. The growing volume of procurement records across multiple entities made systematic analysis increasingly impractical.',objective:'Automate the full pipeline from procurement extraction to opportunity prioritization, reducing manual effort and improving the identification of strategically relevant opportunities through data analysis and AI-assisted categorization.',role:'Sole developer and consultant responsible for system architecture, data extraction workflows, AI-assisted classification logic, report generation, client communication, and iterative validation based on operational feedback sessions. Also handled project proposal preparation, pricing discussions, and delivery coordination.',technical:'Developed a session-based procurement scraper using Python, requests, and BeautifulSoup to extract PAC data from government procurement portals. Implemented keyword scoring, fuzzy entity matching, AI-assisted categorization using GPT-4o mini, and structured reporting pipelines using openpyxl. The final deliverable included categorized opportunities, urgency indicators, and summary dashboards for operational decision-making.',challenges:'One of the main technical challenges involved handling stateful JSF procurement portals, where hidden intermediate requests were required to properly initialize server-side entity sessions before file downloads became available. Additional complexity came from normalizing inconsistent entity names across multiple datasets, requiring custom fuzzy matching strategies and manual validation rules.',outcome:'Delivered a validated procurement intelligence panel that allowed the consulting team to identify high-priority opportunities more efficiently and supported the continuation of the project into a second monitoring-focused phase.',lessons:'This project reinforced the importance of session-aware scraping strategies, robust data normalization, and combining rule-based filtering with AI-assisted categorization to reduce false positives in large procurement datasets.',screenshotCount:3}},
+        {id:'recruitment-ngr',title:'Android Autocaller',type:'Android App',year:'2026',icon:'phone_in_talk',portrait:true,desc:'Functional Android prototype to optimize mass recruitment through automated dialing and contact management from local databases.',tags:['Kotlin','Android','Automation'],stack:['Kotlin','Android SDK','Material Design 3','SharedPreferences'],cols:4,images:['images/simple caller app/Screenshot_20260508_122634.png'],detail:{summary:'Functional Android prototype developed to optimize mass recruitment workflows through automated dialing and contact management from local databases.',problem:'In high-volume campaigns, recruiters lose 2 to 3 hours daily dialing numbers manually and transcribing notes. The process is exhausting, error-prone and makes real-time indicator tracking difficult.',objective:'Automate call logistics to maximize daily contact capacity and centralize data collection in an efficient mobile interface.',role:'Identified the operational bottleneck, designed the user interface and developed the full application logic, leading the pilot rollout with the recruitment team.',technical:'Kotlin and Android SDK. ACTION_CALL implementation for direct dialing and automatic return to the app. CSV processing engine for reading contact databases and local note persistence via SharedPreferences.',challenges:'File format variability in source files, including different delimiters and character encoding issues with special characters, required building a robust parser and data-cleaning functions to normalize input.',outcome:'125% increase in individual productivity, going from an average of 80 to 180 calls per shift. A record peak of 45 interviews scheduled in a single day was reached. Currently in pilot phase for internal and external teams.',lessons:'Optimizing micro-interactions, saving 10 seconds per call, generates massive impact in high-volume tasks. A 100% local solution removes corporate adoption barriers related to data privacy.',screenshotCount:1}},
+        {id:'habit-tracker',title:'Habit Tracking Mobile App',type:'Mobile App',year:'2025',icon:'check_circle',portrait:true,desc:'Mobile app with full CRUD, configurable steps system, inline editing and routine import/export in JSON format.',tags:['React Native','Node.js','SQLite'],stack:['React Native','Node.js','SQLite','Expo','AsyncStorage'],cols:4,images:['images/habits app/app1.png','images/habits app/Screenshot_20260507_160213.png','images/habits app/Screenshot_20260507_160612.png'],detail:{summary:'Mobile app for daily habit tracking with a configurable steps system, progress visualization and routine import/export functionality.',problem:'Existing habit apps are either too simple or feature-bloated. Users need a flexible solution to configure multi-step habits with minimal friction.',objective:'Create an intuitive mobile app allowing users to define step-based habits, track daily progress and share routines via data export.',role:'Designed the architecture, implemented the React Native frontend, SQLite persistence and import/export functionality in JSON format.',technical:'React Native with Expo for iOS/Android compatibility. Local persistence with Expo SQLite. Steps system with hierarchical data structure. JSON import/export via device file system.',challenges:'Synchronizing UI state with local database changes presented consistency challenges, especially in inline edit mode.',outcome:'Functional app with over 15 features implemented. User flow validated with real user testing. Import/export working correctly on both platforms.',lessons:'Data model design is crucial before writing UI code. Real user testing early on prevents costly redesigns.',screenshotCount:4}},
+        {id:'ai-social-skills',title:'AI for Social Skills - Thesis Proposal',type:'Thesis Project',year:'2025',icon:'psychology',images:['images/tesis/maqueta.png','images/tesis/arquitectura.JPG'],portrait:true,desc:'AI system using computer vision for facial expression recognition and NLP for communication. Focused on children with ASD.',tags:['Computer Vision','NLP','Python'],stack:['Python','TensorFlow','OpenCV','NLTK','Flask'],cols:4,detail:{summary:'Thesis proposal designing an AI system to assist social skills development in children with ASD, combining facial expression recognition and natural language processing.',problem:'Children with ASD frequently struggle to recognize emotional expressions and maintain socially appropriate conversations. Conventional therapies have limited reach and high access cost.',objective:'Design an AI system to serve as a therapeutic support tool, providing real-time feedback on emotional recognition and communication for children with ASD.',role:'Developed the project as a two-person team. Together with my partner, we wrote the research proposal, designed the system architecture, reviewed 47 related literature articles and developed the methodological implementation plan.',technical:'Vision module with OpenCV and TensorFlow for real-time facial expression detection and classification. NLP module with NLTK for communication pattern analysis. Flask web interface.',challenges:'Obtaining ethical and representative training data for ASD populations. Clinical impact evaluation requires coordination with specialized institutions and ethics committee approval.',outcome:'Proposal approved. Systematic review completed with 47 articles analyzed. Conceptual prototype documented and technical architecture validated by academic advisors.',lessons:'Interdisciplinary research requires close collaboration with clinical experts. Ethical considerations in AI for vulnerable populations must be central from design.',screenshotCount:2}}
+      ],
+      additional:[
+        {id:'autism-lit-review',title:'Systematic Literature Review on Technology-Assisted Autism Therapies',type:'Academic Research',year:'2025',icon:'menu_book',thumbnail:'images/autism lit review/preview.JPG',thumbPosition:'top',images:[],desc:'Comparative research study analyzing technology-assisted interventions versus traditional therapeutic approaches for improving social and emotional skills in individuals with autism spectrum disorder.',tags:['Research','Comparative Analysis','ASD'],stack:['Academic Research','Literature Review','Comparative Analysis','Data Synthesis','Autism Technology Research'],cols:6,detail:{summary:'Comparative research study analyzing technology-assisted interventions versus traditional therapeutic approaches for improving social and emotional skills in individuals with autism spectrum disorder.',problem:'Technology-assisted therapies for autism have grown rapidly in recent years, including interventions based on virtual reality, augmented reality, robotics, and AI-assisted systems. However, understanding how these approaches compare against traditional therapeutic methods remains a significant research challenge.',objective:'Conduct a systematic literature review to identify, classify, and compare technology-assisted therapeutic interventions against traditional approaches in autism-related social skill development.',role:'Responsible for research planning, study selection, paper classification, comparative analysis, synthesis of findings, and documentation of limitations, biases, and implementation challenges across the reviewed studies.',technical:'The review analyzed academic studies focused on technology-assisted interventions for autism, including approaches based on augmented reality, virtual reality, robotics, AI-assisted systems, and interactive educational technologies. The analysis compared therapeutic outcomes, implementation challenges, adaptability, accessibility, and limitations reported across the studies.',challenges:'Common limitations identified across the reviewed studies included small participant samples, lack of long-term validation, accessibility challenges, infrastructure limitations, insufficient professional training, and difficulties generalizing results across diverse contexts.',outcome:'The review provided a structured understanding of current trends, limitations, and opportunities in technology-assisted autism therapies, while also supporting the conceptual foundation for future AI-assisted educational systems.',lessons:'The project reinforced the importance of evidence-based analysis when designing human-centered technological interventions, especially in sensitive domains such as autism support and social skill development.',screenshotCount:0,keyFindings:[{stat:'83.5%',label:'Facial recognition accuracy'},{stat:'86%',label:'Social interaction improvement'},{stat:'AR + Robotics',label:'Strongest engagement potential'}],comparisonMatrix:{headerAspect:'Aspect',headerTrad:'Traditional Therapies',headerTech:'Technology-Assisted Therapies',rows:[['Interaction','Therapist-dependent','Greater interactivity and immediate feedback'],['Personalization','Manual adaptation','Potential for dynamic and personalized adaptation'],['Accessibility','Limited by location and availability','Possibility of remote or digital access'],['Engagement','May vary by environment','Greater visual stimulation and interaction'],['Scalability','Difficult to scale','Potential to reach more users'],['Validation','More consolidated methods','Still requires more long-term studies'],['Infrastructure','Lower technological dependency','Requires connectivity and technological resources'],['Training','Based on clinical experience','Requires additional technical training']]}}},
+        {id:'windows-macro',title:'Desktop Macro Recorder',type:'Desktop Tool',year:'2025',icon:'terminal',desc:'Desktop tool for recording and replaying keyboard and mouse macros, with a modern GUI. Automates repetitive tasks across any application without external software.',tags:['Python','pynput','tkinter'],stack:['Python','pynput','tkinter','JSON'],cols:3,images:['images/windows macro/macro.JPG'],detail:{summary:'Desktop tool for recording and replaying keyboard and mouse macros, with a modern graphical interface. Lets users automate repetitive tasks in any application without relying on external software.',problem:'Many productivity tasks involve repeating the same sequence of clicks and keystrokes dozens of times. Existing solutions are heavy, paid or require complex setup.',objective:'Build a lightweight, portable, ready-to-use tool that records real interactions and replays them accurately, including timing between actions.',role:'Designed and implemented the full project: recording and playback logic, thread management to keep the interface responsive, and the GUI with a dark theme.',technical:'pynput captures global keyboard and mouse events in real time. Events are serialized to JSON with relative timestamps for proportional playback. A sanitizer normalizes control keys (Ctrl+C, Ctrl+V, etc.) that pynput represents as escape characters. The GUI is built with tkinter and runs the logic in separate threads to keep the interface responsive during recording.',challenges:'The main challenge was handling special keys: combinations like Ctrl+W are recorded as escape characters and needed normalization before playback. It was also necessary to isolate input logic from the main thread to prevent the GUI from freezing during recording.',outcome:'Functional tool used daily to automate repetitive workflows. Portable, no installers required, runs directly with Python.',lessons:'Global input listeners require careful isolation in separate threads. Synchronization between the GUI and background processes is as important as the core logic. Well-executed technical simplicity solves real problems without over-engineering.',screenshotCount:1}},
+        {id:'excel-recruitment',title:'Excel Training Sessions — HR Professionals',type:'Training',year:'2025',icon:'table_chart',desc:'Designed and personally taught advanced Excel training sessions for professionals across various HR areas, focused on building reports for management.',tags:['Excel','Power Query','HR'],stack:['Microsoft Excel','Power Query','VBA','Power BI'],cols:3,images:['images/clases excel/dashboard.svg'],detail:{summary:'Designed and personally taught an Excel training program for professionals across various HR areas, covering advanced functions, pivot tables, Power Query and automation of management reports.',problem:'HR professionals across different areas used Excel at a basic level, missing features that could save hours weekly and improve the quality of reports delivered to management.',objective:'Raise the Excel proficiency level of participants across HR areas, focused on building and automating management-ready reports tailored to each team\'s needs.',role:'Designed the curriculum, created materials and practical exercises using real team data, delivered the sessions and tracked adoption of what was learned.',technical:'4-session program: (1) Advanced lookup functions (VLOOKUP, INDEX-MATCH, XLOOKUP); (2) Pivot tables; (3) Power Query for data transformation; (4) Basic VBA macros.',challenges:'Different prior skill levels required adapting the pace. Keeping interest in technical sessions required using real daily work cases as examples.',outcome:'Participants noticeably improved their Excel skills, building clearer and more efficient reports for management. They reduced the time spent on weekly reporting and adopted pivot tables and Power Query as regular tools in their day-to-day work.',lessons:'Training is more effective with real participant data. Post-training follow-up is key for adoption. Providing reference resources beats step-by-step tutorials.',screenshotCount:2}}
+      ]
+    },
+    experience:{
+      label:'Experience',
+      h2:"Where I've <span class='accent'>made an impact.</span>",
+      roles:[
+        {date:'Apr. 2026 - Present',badge:'Active',badgeClass:'active',icon:'smart_toy',role:'Procurement Automation & Intelligence Developer',co:'RCR Consultores S.A.C. | Independent Consulting',bullets:['Lead the full project: technical architecture, iterative client validation, requirements gathering, pricing proposal and deliverable coordination.','Design and implement a procurement intelligence system to automate the extraction, consolidation and prioritization of public contracting opportunities from multiple Peruvian government entities.','Build scraping pipelines with Python, Requests and BeautifulSoup for government portals with session handling and JSF flows with intermediate states.','Implement AI-assisted opportunity classification and scoring (GPT-4o mini), fuzzy entity matching and keyword filters to reduce false positives.','The delivered reports allow the team to make decisions faster and with greater confidence, reducing the risk of missing proposals due to time pressure or manual filtering errors.'],tags:['Python','OpenAI API','BeautifulSoup','OpenPyXL','Scraping']},
+        {date:'Mar 2026',badge:'Completed',badgeClass:'done',icon:'restaurant',role:'Automation & Recruitment Assistant',co:'Servicios Compartidos de Restaurantes S.A. (NGR)',bullets:['Developed an internal application to optimize call management and candidate tracking in mass recruitment.','Automated the registration and organization of applicant data, improving process traceability.','Delivered a functional solution for internal use in under 2 weeks.'],tags:['Python','Full Stack','Automation']},
+        {date:'Sep 2025 - Feb 2026',badge:'Completed',badgeClass:'done',icon:'school',role:'Professional Intern in Data Analysis & Automation',co:'UTEC',bullets:['Automated data validation and preparation during ERP migration, ensuring integrity and compliance with business rules before production deployment.','Designed scripts to detect inconsistencies across systems, reducing operational risks before go-live.','Implemented automated controls to validate data flows between integrated systems.','Built monitoring dashboards to track critical processes and identify anomalies in real time.'],tags:['Python','Apps Script','Power BI','SQL','ERP']},
+        {date:'Feb 2025 - Sep 2025',badge:'Completed',badgeClass:'done',icon:'factory',role:'Pre-Professional Intern in People Analytics',co:'Trupal S.A.',bullets:['Designed and implemented automated ETL processes using UiPath, ensuring correct data extraction, transformation and loading.','Developed Excel macros with validation controls to reduce errors in attendance records and executive reports.','Implemented Python scripts for data cleaning and validation to support KPI analysis.'],tags:['UiPath','Python','Excel','ETL','Power BI']}
+      ]
+    },
+    skills:{
+      label:'Skills & technologies',
+      h2:'My technical <span class="accent">stack.</span>',
+      progTitle:'Programming & Development',
+      progItems:['Python','Java','JavaScript','SQL','C#','Kotlin','Ruby','PHP','React.js','Node.js','Angular','Apps Script'],
+      softTitle:'Soft skills',
+      softItems:['Analytical thinking','Agile learning','Effective communication','Impact-oriented','Teamwork'],
+      autoTitle:'Automation, AI & Data',
+      autoItems:['OpenAI API','LLMs','Prompt Engineering','Computer Vision','Power Automate','UiPath','Apps Script','Power BI','Looker Studio','Advanced Excel','REST APIs','ETL','Functional testing','TDD','Scrum','Git / GitHub','Jira','Trello'],
+      eduLabel:'Education',eduTitle:'Software Engineering',eduSub:'Universidad Tecnol\u00f3gica del Per\u00fa (UTP)',eduYear:'2026',eduYearLbl:'Bachelor\'s Degree'
+    },
+    about:{
+      label:'About me',
+      h2:'Beyond the <span class="accent">code.</span>',
+      p1:"I'm from Lima, Peru. I hold a Bachelor's degree in Software Engineering from UTP (2026). Since then I've worked in real corporate environments where impact is measured in time saved and processes transformed.",
+      p2:"I'm motivated by finding where technology solves a real business problem, not because it's technically interesting, but because it simplifies the lives of the people who use it every day.",
+      cta1:"Let's collaborate",cta2:'Download CV',photoLabel:'Your photo here',location:'Lima, Peru · Remote OK'
+    },
+    contact:{
+      avail:'Available now',
+      h2:'Ready to transform your <span class="accent">processes?</span>',
+      desc:'Available for automation, development or consulting. I respond in less than 24 hours.',
+      links:[
+        {icon:'alternate_email',label:'Email',val:'tavarapiero0@gmail.com',href:'mailto:tavarapiero0@gmail.com',bg:'#a7f3d0',color:'#064e3b'},
+        {icon:'chat',label:'WhatsApp',val:'+51 958 483 192',href:'https://web.whatsapp.com/send?phone=51958483192',bg:'#dcfce7',color:'#15803d'},
+        {icon:'link',label:'LinkedIn',val:'linkedin.com/in/piero-tavara',href:'https://www.linkedin.com/in/piero-tavara/',bg:'#a3ebfd',color:'#1a6c7c'},
+        {icon:'code',label:'GitHub',val:'github.com/Piero-T',href:'https://github.com/Piero-T',bg:'#e2e8f0',color:'#475569'}
+      ],
+      formTitle:'Send me a message',
+      nameLbl:'Name',namePh:'Your name',
+      emailLbl:'Email',emailPh:'you@email.com',
+      msgLbl:'Message',msgPh:'Tell me about your project...',
+      send:'Send',sentTitle:'Message sent!',sentDesc:"I'll get back to you soon."
+    },
+    allProjects:{
+      badge:'All projects',h1:'Projects.',desc:'Automation, web development, AI and more. Each project solves a real problem.',
+      back:'Back to home',see:'See details',
+      featuredLabel:'Featured Projects',
+      additionalLabel:'Additional Projects'
+    },
+    projectDetail:{
+      back:'Back',
+      summaryLabel:'Summary',
+      problemLabel:'Problem / Context',
+      objectiveLabel:'Objective',
+      roleLabel:'My Role',
+      technicalLabel:'Technical Details',
+      keyFindingsLabel:'Key Findings',
+      comparisonLabel:'Comparative Analysis',
+      challengesLabel:'Challenges',
+      outcomeLabel:'Outcome / Impact',
+      galleryLabel:'Gallery / Screenshots',
+      lessonsLabel:'Lessons Learned',
+      techStackLabel:'Tech Stack',
+      projectTypeLabel:'Project Type',
+      yearLabel:'Year'
+    },
+    footer:'© 2026 Piero Tavara · Lima, Peru'
+  }
+};
+
+var lang = 'es';
+var _prevPage = 'home';
+var _activeProjectId = null;
+
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(function(b,i){ b.classList.toggle('active', i===(l==='es'?0:1)); });
+  render();
+}
+
+function d() { return T[lang]; }
+function ge(id) { return document.getElementById(id); }
+function hi(id,v) { var e=ge(id); if(e) e.innerHTML=v; }
+function tx(id,v) { var e=ge(id); if(e) e.textContent=v; }
+
+function render() {
+  var data = d();
+
+  /* Nav */
+  ge('nav-links').innerHTML = data.navLinks.map(function(n){ return '<li><a href="'+n[0]+'" onclick="smoothNav(event,\''+n[0]+'\')">'+n[1]+'</a></li>'; }).join('');
+  ge('nav-cta-btn').innerHTML = '<span class="material-symbols-outlined" style="font-size:16px">mail</span> '+data.navCta;
+
+  /* Hero */
+  tx('hero-avail', data.hero.avail);
+  tx('hero-badge-text', data.hero.avail);
+  hi('hero-h1', data.hero.h1);
+  tx('hero-p', data.hero.p);
+  tx('hero-cta1', data.hero.cta1);
+  tx('hero-cta2', data.hero.cta2);
+  ge('hero-pillars').innerHTML = data.hero.pillars.map(function(p){
+    return '<div class="pillar"><div class="pillar-label"><span class="material-symbols-outlined" style="font-size:16px">'+p.icon+'</span>'+p.label+'</div><div class="pillar-title">'+p.title+'</div><div class="pillar-desc">'+p.desc+'</div></div>';
+  }).join('');
+
+  /* Services */
+  tx('s-services-label', data.services.label);
+  hi('s-services-h2', data.services.h2);
+  tx('s-services-desc', data.services.desc);
+  ge('services-grid').innerHTML = data.services.items.map(function(s){
+    return '<div class="service-card fade"><div class="service-icon"><span class="material-symbols-outlined">'+s.icon+'</span></div><div class="service-title">'+s.title+'</div><div class="service-desc">'+s.desc+'</div><div class="tag-list">'+s.tags.map(function(tg){ return '<span class="tag">'+tg+'</span>'; }).join('')+'</div></div>';
+  }).join('');
+
+  /* Projects */
+  tx('s-projects-label', data.projects.label);
+  hi('s-projects-h2', data.projects.h2);
+  tx('s-projects-seeall-text', data.projects.seeAll);
+  var fp = data.projects.featured;
+  var hero = fp[0];
+  var _hImg = (hero.images && hero.images.length > 0 && !hero.images[0].match(/\.html?$/i))
+    ? '<img src="'+hero.images[0]+'" alt="'+hero.title+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">'
+    : '<span class="material-symbols-outlined">'+hero.icon+'</span>';
+  var heroHtml = '<div class="proj-featured fade" onclick="showProjectDetail(\''+hero.id+'\')">'+
+    '<div class="proj-img">'+
+      _hImg+
+      '<span class="proj-img-badge">'+hero.year+'</span>'+
+    '</div>'+
+    '<div class="proj-body">'+
+      '<div class="proj-type-label">'+hero.type+'</div>'+
+      '<div class="proj-tags">'+hero.tags.map(function(tg){ return '<span class="proj-chip">'+tg+'</span>'; }).join('')+'</div>'+
+      '<div class="proj-title">'+hero.title+'</div>'+
+      '<div class="proj-desc">'+hero.desc+'</div>'+
+      '<a href="#" class="proj-link" onclick="showProjectDetail(\''+hero.id+'\');return false"><span>'+data.projects.viewDetail+'</span><span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>'+
+    '</div>'+
+  '</div>';
+  var mdHtml = '<div class="proj-md-grid">'+
+    fp.slice(1).map(function(p){
+      var _pThumb = p.thumbnail || (p.images && p.images.length > 0 && !p.images[0].match(/\.html?$/i) ? p.images[0] : null);
+      var _pImgStyle = p.portrait
+        ? 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center 20%;background:#1a1a2e;transform:scale(3);transform-origin:center 20%'
+        : 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:'+(p.thumbPosition||'center');
+      var _pImg = _pThumb
+        ? '<img src="'+_pThumb+'" alt="'+p.title+'" style="'+_pImgStyle+'">'
+        : '<span class="material-symbols-outlined">'+p.icon+'</span>';
+      return '<div class="proj-featured-md fade" onclick="showProjectDetail(\''+p.id+'\')">'+
+        '<div class="proj-featured-md-img">'+
+          _pImg+
+          '<span class="proj-img-badge">'+p.year+'</span>'+
+        '</div>'+
+        '<div class="proj-featured-md-body">'+
+          '<div class="proj-type-label">'+p.type+'</div>'+
+          '<div class="proj-tags">'+p.tags.map(function(tg){ return '<span class="proj-chip">'+tg+'</span>'; }).join('')+'</div>'+
+          '<div class="proj-title">'+p.title+'</div>'+
+          '<div class="proj-desc">'+p.desc+'</div>'+
+          '<a href="#" class="proj-link" onclick="showProjectDetail(\''+p.id+'\');return false"><span>'+data.projects.viewDetail+'</span><span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>'+
+        '</div>'+
+      '</div>';
+    }).join('')+
+  '</div>';
+  ge('projects-grid').innerHTML = heroHtml + mdHtml;
+  ge('s-projects-viewall-btn').innerHTML = data.projects.viewAll+' <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>';
+
+  /* Experience */
+  tx('s-exp-label', data.experience.label);
+  hi('s-exp-h2', data.experience.h2);
+  var exp = data.experience;
+  ge('exp-grid').innerHTML = exp.roles.map(function(r){
+    var bullets = r.bullets.map(function(b,i){
+      var icons = ['check_circle','code','monitoring','database'];
+      return '<li><span class="material-symbols-outlined">'+icons[i % icons.length]+'</span>'+b+'</li>';
+    }).join('');
+    var tags = r.tags.map(function(tg){ return '<span class="tag">'+tg+'</span>'; }).join('');
+    return '<div class="exp-item fade">'+
+      '<div class="exp-meta">'+
+        '<div class="exp-date">'+r.date+'</div>'+
+        '<span class="exp-badge '+r.badgeClass+'">'+r.badge+'</span>'+
+      '</div>'+
+      '<div>'+
+        '<div class="exp-role">'+r.role+'</div>'+
+        '<div class="exp-co">'+r.co+'</div>'+
+        '<ul class="exp-bullets">'+bullets+'</ul>'+
+        '<div class="exp-tags">'+tags+'</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+
+  /* Skills */
+  tx('s-skills-label', data.skills.label);
+  hi('s-skills-h2', data.skills.h2);
+  var sk = data.skills;
+  ge('skills-grid').innerHTML =
+    '<div class="skills-card fade"><div class="skills-card-head"><div class="skills-icon green"><span class="material-symbols-outlined">terminal</span></div><div class="skills-card-title">'+sk.progTitle+'</div></div><div class="skill-chips">'+sk.progItems.map(function(s){ return '<div class="skill-chip">'+s+'</div>'; }).join('')+'</div></div>'+
+    '<div class="skills-card fade"><div class="skills-card-head"><div class="skills-icon slate"><span class="material-symbols-outlined">psychology</span></div><div class="skills-card-title">'+sk.softTitle+'</div></div><ul class="soft-list">'+sk.softItems.map(function(s){ return '<li><span class="material-symbols-outlined">check_circle</span>'+s+'</li>'; }).join('')+'</ul></div>'+
+    '<div class="skills-full"><div class="skills-auto grad fade"><div class="skills-auto-inner"><div><div class="skills-card-head" style="color:#fff;margin-bottom:16px"><div class="skills-icon" style="background:rgba(255,255,255,.15)"><span class="material-symbols-outlined" style="color:#fff">insights</span></div><div class="skills-card-title" style="color:#fff">'+sk.autoTitle+'</div></div><div class="auto-chips">'+sk.autoItems.map(function(s){ return '<span class="auto-chip">'+s+'</span>'; }).join('')+'</div></div></div><div class="skills-auto-bg"><span class="material-symbols-outlined">monitoring</span></div></div></div>'+
+    '<div class="skills-full"><div class="skills-edu fade"><div class="edu-left"><div class="edu-icon"><span class="material-symbols-outlined">school</span></div><div><div class="edu-label">'+sk.eduLabel+'</div><div class="edu-title">'+sk.eduTitle+'</div><div class="edu-sub">'+sk.eduSub+'</div></div></div><div><div class="edu-year">'+sk.eduYear+'</div><div class="edu-year-lbl">'+sk.eduYearLbl+'</div></div></div></div>';
+
+  /* About */
+  tx('s-about-label', data.about.label);
+  hi('s-about-h2', data.about.h2);
+  tx('s-about-p1', data.about.p1);
+  tx('s-about-p2', data.about.p2);
+  tx('s-about-cta1', data.about.cta1);
+  tx('s-about-cta2', data.about.cta2);
+  tx('s-about-photolabel', data.about.photoLabel);
+  tx('s-about-location', data.about.location);
+
+  /* Contact */
+  tx('s-contact-avail', data.contact.avail);
+  hi('s-contact-h2', data.contact.h2);
+  tx('s-contact-desc', data.contact.desc);
+  ge('contact-links').innerHTML = data.contact.links.map(function(c){
+    var isWa = c.href.indexOf('whatsapp') !== -1;
+    var copyVal = c.href.indexOf('mailto:') === 0 ? c.val : c.href.indexOf('whatsapp') !== -1 ? '+51958483192' : c.href;
+    var copyBtn = '<button class="clink-copy" onclick="event.preventDefault();event.stopPropagation();handleCopy(\''+copyVal.replace(/\'/g,"\\'")+'\'  ,this)" title="Copiar"><span class="material-symbols-outlined" style="font-size:15px">content_copy</span></button>';
+    var rightEl = isWa
+      ? '<span class="clink-wa-tag"><span class="material-symbols-outlined" style="font-size:14px">chat</span>Chatear</span>'
+      : '<span class="material-symbols-outlined arr">open_in_new</span>';
+    return '<a href="'+c.href+'" target="_blank" class="clink'+(isWa?' clink-whatsapp':'')+'">'
+      +'<div class="clink-left"><div class="clink-ico" style="background:'+c.bg+'"><span class="material-symbols-outlined" style="color:'+c.color+'">'+c.icon+'</span></div>'
+      +'<div><div class="clink-name">'+c.label+'</div><div class="clink-val">'+c.val+'</div></div></div>'
+      +'<div class="clink-actions">'+copyBtn+rightEl+'</div>'
+      +'</a>';
+  }).join('');
+
+  /* Footer */
+  tx('footer-copy', data.footer);
+
+  /* All Projects */
+  var ap = data.allProjects;
+  tx('ap-badge', ap.badge);
+  tx('ap-h1', ap.h1);
+  tx('ap-desc', ap.desc);
+  tx('ap-back', ap.back);
+  function projCardHtml(p) {
+    var _cThumb = p.thumbnail || (p.images && p.images.length > 0 && !p.images[0].match(/\.html?$/i) ? p.images[0] : null);
+    var _cImgStyle = p.portrait
+      ? 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center 20%;background:#1a1a2e;transform:scale(3);transform-origin:center 20%'
+      : 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
+    var _cImg = _cThumb
+      ? '<img src="'+_cThumb+'" alt="'+p.title+'" style="'+_cImgStyle+'">'
+      : '<span class="material-symbols-outlined">'+p.icon+'</span>';
+    return '<div class="proj-card fade" style="grid-column:span '+p.cols+';cursor:pointer" onclick="showProjectDetail(\''+p.id+'\')">'+
+      '<div class="proj-card-img">'+
+        _cImg+
+      '</div>'+
+      '<div class="proj-card-body">'+
+        '<div class="proj-card-meta">'+
+          '<div class="tag-list">'+p.tags.slice(0,2).map(function(tg){ return '<span class="proj-chip">'+tg+'</span>'; }).join('')+'</div>'+
+          '<span class="proj-card-year">'+p.year+'</span>'+
+        '</div>'+
+        '<div class="proj-type-label" style="margin-top:4px">'+p.type+'</div>'+
+        '<div class="proj-card-title">'+p.title+'</div>'+
+        '<div class="proj-card-desc">'+p.desc+'</div>'+
+        '<a href="#" class="proj-card-link" onclick="showProjectDetail(\''+p.id+'\');return false"><span>'+ap.see+'</span><span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>'+
+      '</div>'+
+    '</div>';
+  }
+  ge('all-proj-grid').innerHTML =
+    '<div class="proj-section-label">'+ap.featuredLabel+'</div>'+
+    data.projects.featured.map(projCardHtml).join('')+
+    '<div class="proj-section-label">'+ap.additionalLabel+'</div>'+
+    data.projects.additional.map(projCardHtml).join('');
+
+  /* Re-render detail page on language switch */
+  if (ge('project-detail-page').style.display === 'block' && _activeProjectId) {
+    var allP = data.projects.featured.concat(data.projects.additional);
+    for (var i = 0; i < allP.length; i++) {
+      if (allP[i].id === _activeProjectId) { renderProjectDetail(allP[i]); break; }
+    }
+    tx('detail-back-label', data.projectDetail.back);
+  }
+
+  initFade();
+}
+
+function smoothNav(e, hash) {
+  if (ge('all-projects-page').style.display === 'block') return;
+  if (ge('project-detail-page').style.display === 'block') { showHome(); return; }
+  var target = document.querySelector(hash);
+  if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+}
+
+function showProjects() {
+  ge('home-page').style.display = 'none';
+  ge('project-detail-page').style.display = 'none';
+  ge('all-projects-page').style.display = 'block';
+  window.scrollTo(0,0);
+  history.pushState({page:'projects'}, '');
+  initFade();
+}
+
+function showHome() {
+  ge('all-projects-page').style.display = 'none';
+  ge('project-detail-page').style.display = 'none';
+  ge('home-page').style.display = 'block';
+  window.scrollTo(0,0);
+  history.pushState({page:'home'}, '');
+}
+
+function showProjectDetail(id) {
+  var data = d();
+  var all = data.projects.featured.concat(data.projects.additional);
+  var project = null;
+  for (var i = 0; i < all.length; i++) { if (all[i].id === id) { project = all[i]; break; } }
+  if (!project) return;
+  _activeProjectId = id;
+  ge('home-page').style.display = 'none';
+  ge('all-projects-page').style.display = 'none';
+  ge('project-detail-page').style.display = 'block';
+  window.scrollTo(0,0);
+  history.pushState({page:'detail', id:id}, '');
+  tx('detail-back-label', data.projectDetail.back);
+  renderProjectDetail(project);
+  initFade();
+}
+
+function renderProjectDetail(project) {
+  var labels = d().projectDetail;
+  var images = project.images || [];
+
+  // Hero media: real image, iframe (html), or placeholder icon
+  var heroMedia;
+  if (images.length === 0) {
+    heroMedia = '<span class="material-symbols-outlined">'+project.icon+'</span><span class="hint">Imagen: reemplaza con &lt;img&gt;</span>';
+  } else if (images[0].slice(-5).toLowerCase().indexOf('.htm') !== -1) {
+    heroMedia = '<iframe src="'+images[0]+'" loading="lazy"></iframe>';
+  } else {
+    heroMedia = '<img src="'+images[0]+'" alt="'+project.title+'">';
+  }
+
+  // Gallery only when 2+ images exist
+  var galleryHtml = '';
+  if (images.length > 1) {
+    var galleryItems = images.slice(1).map(function(src){
+      return '<div class="gallery-item"><img src="'+src+'" alt="Screenshot"></div>';
+    }).join('');
+    galleryHtml = '<div class="detail-gallery fade"><h3>'+labels.galleryLabel+'</h3><div class="gallery-grid">'+galleryItems+'</div></div>';
+  }
+
+  // Key findings (optional)
+  var keyFindingsHtml = '';
+  if (project.detail.keyFindings && project.detail.keyFindings.length) {
+    var cards = project.detail.keyFindings.map(function(f){
+      return '<div class="detail-finding-card"><div class="detail-finding-stat">'+f.stat+'</div><div class="detail-finding-label">'+f.label+'</div></div>';
+    }).join('');
+    keyFindingsHtml = '<div class="detail-section fade"><h3>'+(labels.keyFindingsLabel||'Key Findings')+'</h3><div class="detail-findings">'+cards+'</div></div>';
+  }
+
+  // Comparison matrix (optional)
+  var comparisonHtml = '';
+  if (project.detail.comparisonMatrix) {
+    var m = project.detail.comparisonMatrix;
+    var tableRows = m.rows.map(function(r){ return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>'; }).join('');
+    comparisonHtml = '<div class="detail-section fade"><h3>'+(labels.comparisonLabel||'Comparative Analysis')+'</h3><table class="detail-matrix"><thead><tr><th>'+m.headerAspect+'</th><th>'+m.headerTrad+'</th><th>'+m.headerTech+'</th></tr></thead><tbody>'+tableRows+'</tbody></table></div>';
+  }
+
+  var pills = (project.stack || []).map(function(s){ return '<span class="tech-pill">'+s+'</span>'; }).join('');
+  var chips = (project.tags || []).map(function(t){ return '<span class="proj-chip">'+t+'</span>'; }).join('');
+
+  // Portrait projects: skip hero image, show images in sidebar instead
+  var portraitSidebarHtml = '';
+  var heroImgHtml = images.length > 0 ? '<div class="detail-hero-img">'+heroMedia+'</div>' : '';
+  if (project.portrait && images.length > 0) {
+    heroImgHtml = '';
+    var portraitImgs = images.map(function(src){
+      return '<img src="'+src+'" alt="'+project.title+'">';
+    }).join('');
+    portraitSidebarHtml = '<div class="detail-portrait-imgs fade">'+portraitImgs+'</div>';
+  }
+
+  ge('detail-content').innerHTML =
+    '<div class="detail-hero fade">'+
+      '<div class="detail-hero-top">'+
+        '<h1 class="detail-title">'+project.title+'</h1>'+
+        '<div class="detail-meta">'+
+          '<span class="detail-year-badge">'+project.year+'</span>'+
+          '<span class="detail-type-badge">'+project.type+'</span>'+
+        '</div>'+
+      '</div>'+
+      heroImgHtml+
+      '<div class="detail-hero-tags">'+chips+'</div>'+
+    '</div>'+
+    '<div class="detail-grid">'+
+      '<div class="detail-main">'+
+        '<div class="detail-section summary fade"><h3>'+labels.summaryLabel+'</h3><p>'+project.detail.summary+'</p></div>'+
+        '<div class="detail-section fade"><h3>'+labels.problemLabel+'</h3><p>'+project.detail.problem+'</p></div>'+
+        '<div class="detail-section fade"><h3>'+labels.objectiveLabel+'</h3><p>'+project.detail.objective+'</p></div>'+
+        '<div class="detail-section fade"><h3>'+labels.roleLabel+'</h3><p>'+project.detail.role+'</p></div>'+
+        '<div class="detail-section fade"><h3>'+labels.technicalLabel+'</h3><p>'+project.detail.technical+'</p></div>'+
+        keyFindingsHtml+
+        '<div class="detail-section fade"><h3>'+labels.challengesLabel+'</h3><p>'+project.detail.challenges+'</p></div>'+
+        comparisonHtml+
+        '<div class="detail-section fade"><h3>'+labels.outcomeLabel+'</h3><p>'+project.detail.outcome+'</p></div>'+
+        galleryHtml+
+        '<div class="detail-section fade"><h3>'+labels.lessonsLabel+'</h3><p>'+project.detail.lessons+'</p></div>'+
+      '</div>'+
+      '<div class="detail-sidebar">'+
+        portraitSidebarHtml+
+        '<div class="detail-sidebar-card fade"><h4>'+labels.techStackLabel+'</h4><div class="tech-pills">'+pills+'</div></div>'+
+        '<div class="detail-sidebar-card fade">'+
+          '<div class="detail-stat"><span class="detail-stat-label">'+labels.projectTypeLabel+'</span><span class="detail-stat-value">'+project.type+'</span></div>'+
+          '<div class="detail-stat"><span class="detail-stat-label">'+labels.yearLabel+'</span><span class="detail-stat-value">'+project.year+'</span></div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+}
+
+function backFromDetail() {
+  history.back();
+}
+
+function scrollToContact() {
+  showHome();
+  setTimeout(function(){ var c=ge('contact'); if(c) c.scrollIntoView({behavior:'smooth'}); },100);
+}
+
+function handleCopy(text, btn) {
+  var icon = btn.querySelector('.material-symbols-outlined');
+  function done() {
+    if (icon) { icon.textContent = 'check'; }
+    btn.style.color = '#059669'; btn.style.borderColor = '#059669';
+    setTimeout(function() {
+      if (icon) { icon.textContent = 'content_copy'; }
+      btn.style.color = ''; btn.style.borderColor = '';
+    }, 1500);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(function() {
+      var ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta); done();
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); done();
+  }
+}
+
+
+function initFade() {
+  setTimeout(function(){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+    },{threshold:0.07});
+    document.querySelectorAll('.fade:not(.in)').forEach(function(el){ obs.observe(el); });
+  },50);
+}
+
+window.addEventListener('scroll', function(){
+  ge('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+window.addEventListener('popstate', function(e) {
+  var state = e.state || {page:'home'};
+  if (state.page === 'detail' && state.id) {
+    var data = d();
+    var all = data.projects.featured.concat(data.projects.additional);
+    for (var i = 0; i < all.length; i++) {
+      if (all[i].id === state.id) {
+        ge('home-page').style.display = 'none';
+        ge('all-projects-page').style.display = 'none';
+        ge('project-detail-page').style.display = 'block';
+        _activeProjectId = state.id;
+        tx('detail-back-label', data.projectDetail.back);
+        renderProjectDetail(all[i]);
+        window.scrollTo(0,0);
+        initFade();
+        break;
+      }
+    }
+  } else if (state.page === 'projects') {
+    ge('home-page').style.display = 'none';
+    ge('project-detail-page').style.display = 'none';
+    ge('all-projects-page').style.display = 'block';
+    _activeProjectId = null;
+    window.scrollTo(0,0);
+    initFade();
+  } else {
+    ge('all-projects-page').style.display = 'none';
+    ge('project-detail-page').style.display = 'none';
+    ge('home-page').style.display = 'block';
+    _activeProjectId = null;
+    window.scrollTo(0,0);
+  }
+});
+
+render();
+history.replaceState({page:'home'}, '');
+</script>
+</body>
+</html>
