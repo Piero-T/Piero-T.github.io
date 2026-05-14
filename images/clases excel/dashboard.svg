@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 510" width="880" height="510">
+  <rect width="880" height="510" fill="#ececec"/>
+
+  <!-- ===== LEFT PANEL ===== -->
+
+  <!-- Title box -->
+  <rect x="8" y="8" width="335" height="80" fill="#1B5E20"/>
+  <text x="175" y="40" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">DASHBOARD</text>
+  <text x="175" y="64" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">CAPACITACIÓN — 2025</text>
+
+  <!-- KPI card 1 -->
+  <rect x="8" y="96" width="104" height="62" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="60" y="113" font-family="Arial,sans-serif" font-size="7.5" fill="#555" text-anchor="middle">N° de Programas</text>
+  <text x="60" y="147" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1B5E20" text-anchor="middle">18</text>
+
+  <!-- KPI card 2 -->
+  <rect x="118" y="96" width="117" height="62" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="177" y="113" font-family="Arial,sans-serif" font-size="7.5" fill="#555" text-anchor="middle">Horas de Aprendizaje</text>
+  <text x="177" y="147" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1B5E20" text-anchor="middle">2,847</text>
+
+  <!-- KPI card 3 -->
+  <rect x="241" y="96" width="102" height="62" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="292" y="113" font-family="Arial,sans-serif" font-size="7.5" fill="#555" text-anchor="middle">Participantes</text>
+  <text x="292" y="147" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1B5E20" text-anchor="middle">3,250</text>
+
+  <!-- Donut section box -->
+  <rect x="8" y="166" width="335" height="170" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="175" y="184" font-family="Arial,sans-serif" font-size="9" fill="#333" text-anchor="middle">Cursos obligatorios: % de cumplimiento</text>
+
+  <!--
+    Donuts: r=35, circunferencia=219.91
+    Para empezar en 12 en punto: stroke-dashoffset = +54.98 (positivo = gira CCW desde las 3h)
+    SIGMA   97% → dasharray = 219.91*0.97 = 213.3
+    ONBOARD 88% → dasharray = 219.91*0.88 = 193.5
+    PDP     95% → dasharray = 219.91*0.95 = 208.9
+  -->
+
+  <!-- Donut 1: SIGMA 97% — cx=75 cy=250 -->
+  <circle cx="75" cy="250" r="35" fill="none" stroke="#C8E6C9" stroke-width="13"/>
+  <circle cx="75" cy="250" r="35" fill="none" stroke="#2E7D32" stroke-width="13"
+          stroke-dasharray="213.3 219.9" stroke-dashoffset="55"/>
+  <text x="75" y="246" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#1a1a1a" text-anchor="middle">97%</text>
+  <text x="75" y="259" font-family="Arial,sans-serif" font-size="7" fill="#666" text-anchor="middle">cumplido</text>
+  <text x="75" y="310" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#222" text-anchor="middle">SIGMA</text>
+
+  <!-- Donut 2: ONBOARDING 88% — cx=175 cy=250 -->
+  <circle cx="175" cy="250" r="35" fill="none" stroke="#C8E6C9" stroke-width="13"/>
+  <circle cx="175" cy="250" r="35" fill="none" stroke="#2E7D32" stroke-width="13"
+          stroke-dasharray="193.5 219.9" stroke-dashoffset="55"/>
+  <text x="175" y="246" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#1a1a1a" text-anchor="middle">88%</text>
+  <text x="175" y="259" font-family="Arial,sans-serif" font-size="7" fill="#666" text-anchor="middle">cumplido</text>
+  <text x="175" y="310" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#222" text-anchor="middle">ONBOARDING</text>
+
+  <!-- Donut 3: PDP 95% — cx=275 cy=250 -->
+  <circle cx="275" cy="250" r="35" fill="none" stroke="#C8E6C9" stroke-width="13"/>
+  <circle cx="275" cy="250" r="35" fill="none" stroke="#2E7D32" stroke-width="13"
+          stroke-dasharray="208.9 219.9" stroke-dashoffset="55"/>
+  <text x="275" y="246" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#1a1a1a" text-anchor="middle">95%</text>
+  <text x="275" y="259" font-family="Arial,sans-serif" font-size="7" fill="#666" text-anchor="middle">cumplido</text>
+  <text x="275" y="310" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#222" text-anchor="middle">PDP</text>
+
+  <!-- Legend -->
+  <rect x="20" y="320" width="9" height="9" fill="#2E7D32"/>
+  <text x="33" y="328" font-family="Arial,sans-serif" font-size="8" fill="#555">finalizado</text>
+  <rect x="102" y="320" width="9" height="9" fill="#C8E6C9" stroke="#aaa" stroke-width="0.5"/>
+  <text x="115" y="328" font-family="Arial,sans-serif" font-size="8" fill="#555">no finalizado</text>
+
+  <!-- ===== RIGHT PANEL ===== -->
+  <rect x="351" y="8" width="521" height="318" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="612" y="30" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#222" text-anchor="middle">Externa / Interna</text>
+
+  <!-- Section dividers -->
+  <line x1="351" y1="116" x2="872" y2="116" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="351" y1="218" x2="872" y2="218" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!--
+    Barras: comienzan en x=430, ancho máximo=380px (hasta x=810)
+    Etiquetas de valor: siempre fuera de la barra, a la derecha, fill="#333"
+
+    Sección 1 — N° de Programas (escala 0-15)
+      Externa  8 → 8/15*380 = 202.7px  → label en x=637
+      Interna 10 → 10/15*380 = 253.3px → label en x=688
+  -->
+  <text x="612" y="53" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#444" text-anchor="middle">N° de Programas</text>
+
+  <text x="364" y="73" font-family="Arial,sans-serif" font-size="9" fill="#555">Externa</text>
+  <rect x="430" y="61" width="380" height="14" fill="#f0f0f0"/>
+  <rect x="430" y="61" width="203" height="14" fill="#2E7D32"/>
+  <text x="637" y="73" font-family="Arial,sans-serif" font-size="9" fill="#333">  8</text>
+
+  <text x="364" y="93" font-family="Arial,sans-serif" font-size="9" fill="#555">Interna</text>
+  <rect x="430" y="81" width="380" height="14" fill="#f0f0f0"/>
+  <rect x="430" y="81" width="253" height="14" fill="#2E7D32"/>
+  <text x="687" y="93" font-family="Arial,sans-serif" font-size="9" fill="#333">  10</text>
+
+  <text x="430" y="112" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">0</text>
+  <text x="557" y="112" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">5</text>
+  <text x="683" y="112" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">10</text>
+  <text x="810" y="112" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">15</text>
+
+  <!--
+    Sección 2 — Horas (escala 0-2000)
+      Externa 1,240 → 1240/2000*380 = 235.6px → label en x=670
+      Interna 1,607 → 1607/2000*380 = 305.3px → label en x=740
+  -->
+  <text x="612" y="138" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#444" text-anchor="middle">Horas</text>
+
+  <text x="364" y="158" font-family="Arial,sans-serif" font-size="9" fill="#555">Externa</text>
+  <rect x="430" y="146" width="380" height="14" fill="#f0f0f0"/>
+  <rect x="430" y="146" width="236" height="14" fill="#2E7D32"/>
+  <text x="670" y="158" font-family="Arial,sans-serif" font-size="9" fill="#333">  1,240</text>
+
+  <text x="364" y="178" font-family="Arial,sans-serif" font-size="9" fill="#555">Interna</text>
+  <rect x="430" y="166" width="380" height="14" fill="#f0f0f0"/>
+  <rect x="430" y="166" width="305" height="14" fill="#2E7D32"/>
+  <text x="739" y="178" font-family="Arial,sans-serif" font-size="9" fill="#333">  1,607</text>
+
+  <text x="430" y="214" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">0</text>
+  <text x="525" y="214" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">500</text>
+  <text x="620" y="214" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">1.000</text>
+  <text x="715" y="214" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">1.500</text>
+  <text x="810" y="214" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">2.000</text>
+
+  <!--
+    Sección 3 — Participantes (escala 0-3000)
+      Externa   380 → 380/3000*380 =  48.1px → label en x=483
+      Interna 2,870 → 2870/3000*380 = 363.5px → label en x=798
+  -->
+  <text x="612" y="240" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#444" text-anchor="middle">Participantes</text>
+
+  <text x="364" y="260" font-family="Arial,sans-serif" font-size="9" fill="#555">Externa</text>
+  <rect x="430" y="248" width="380" height="14" fill="#f0f0f0"/>
+  <rect x="430" y="248" width="48" height="14" fill="#2E7D32"/>
+  <text x="483" y="260" font-family="Arial,sans-serif" font-size="9" fill="#333">  380</text>
+
+  <text x="364" y="280" font-family="Arial,sans-serif" font-size="9" fill="#555">Interna</text>
+  <rect x="430" y="268" width="380" height="14" fill="#f0f0f0"/>
+  <rect x="430" y="268" width="364" height="14" fill="#2E7D32"/>
+  <text x="798" y="280" font-family="Arial,sans-serif" font-size="9" fill="#333">  2,870</text>
+
+  <text x="430" y="310" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">0</text>
+  <text x="557" y="310" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">1.000</text>
+  <text x="683" y="310" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">2.000</text>
+  <text x="810" y="310" font-family="Arial,sans-serif" font-size="7" fill="#aaa" text-anchor="middle">3.000</text>
+
+  <!-- ===== BOTTOM TABLE ===== -->
+  <rect x="8" y="334" width="864" height="168" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <rect x="8" y="334" width="864" height="32" fill="#2E7D32"/>
+
+  <!-- Headers: col centers at 73, 200, 325, 450, 575, 694, 812 -->
+  <text x="73"  y="355" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">Mes</text>
+  <text x="200" y="355" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">ENERO</text>
+  <text x="325" y="355" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">FEBRERO</text>
+  <text x="450" y="355" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">MARZO</text>
+  <text x="575" y="355" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">ABRIL</text>
+  <text x="694" y="355" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">MAYO</text>
+  <text x="812" y="355" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">JUNIO</text>
+
+  <!-- Vertical dividers -->
+  <line x1="138" y1="334" x2="138" y2="502" stroke="#bbb" stroke-width="1"/>
+  <line x1="263" y1="334" x2="263" y2="502" stroke="#bbb" stroke-width="1"/>
+  <line x1="388" y1="334" x2="388" y2="502" stroke="#bbb" stroke-width="1"/>
+  <line x1="513" y1="334" x2="513" y2="502" stroke="#bbb" stroke-width="1"/>
+  <line x1="638" y1="334" x2="638" y2="502" stroke="#bbb" stroke-width="1"/>
+  <line x1="751" y1="334" x2="751" y2="502" stroke="#bbb" stroke-width="1"/>
+
+  <!-- Row 1: N° de programas (light green) -->
+  <rect x="8" y="366" width="864" height="44" fill="#C8E6C9"/>
+  <text x="20" y="384" font-family="Arial,sans-serif" font-size="9" fill="#333">N° de</text>
+  <text x="20" y="396" font-family="Arial,sans-serif" font-size="9" fill="#333">programas</text>
+  <text x="200" y="392" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">3</text>
+  <text x="325" y="392" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">4</text>
+  <text x="450" y="392" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">4</text>
+  <text x="575" y="392" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">2</text>
+  <text x="694" y="392" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">3</text>
+  <text x="812" y="392" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">2</text>
+  <line x1="8" y1="410" x2="872" y2="410" stroke="#bbb" stroke-width="1"/>
+
+  <!-- Row 2: Participantes (white) -->
+  <text x="20" y="430" font-family="Arial,sans-serif" font-size="9" fill="#333">Participantes</text>
+  <text x="200" y="438" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">210</text>
+  <text x="325" y="438" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">480</text>
+  <text x="450" y="438" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">820</text>
+  <text x="575" y="438" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">630</text>
+  <text x="694" y="438" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">720</text>
+  <text x="812" y="438" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">390</text>
+  <line x1="8" y1="456" x2="872" y2="456" stroke="#bbb" stroke-width="1"/>
+
+  <!-- Row 3: Horas capacitadas (light green) -->
+  <rect x="8" y="456" width="864" height="46" fill="#C8E6C9"/>
+  <text x="20" y="474" font-family="Arial,sans-serif" font-size="9" fill="#333">Horas</text>
+  <text x="20" y="486" font-family="Arial,sans-serif" font-size="9" fill="#333">capacitadas</text>
+  <text x="200" y="484" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">92</text>
+  <text x="325" y="484" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">318</text>
+  <text x="450" y="484" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">524</text>
+  <text x="575" y="484" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">619</text>
+  <text x="694" y="484" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">847</text>
+  <text x="812" y="484" font-family="Arial,sans-serif" font-size="13" fill="#222" text-anchor="middle">447</text>
+</svg>
