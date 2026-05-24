@@ -72,7 +72,7 @@ section{padding:64px 0}
 .btn-secondary:hover{background:var(--surface2)}
 .hero-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:32px;border-top:1px solid var(--border)}
 .pillar-label{display:flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:6px}
-.pillar-title{font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin-bottom:6px}
+.pillar-title{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:6px}
 .pillar-desc{font-size:12px;color:var(--text-muted);line-height:1.6}
 .hero-photo-wrap{position:relative}
 .hero-photo{width:100%;aspect-ratio:4/5;border-radius:32px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.12);border:2px solid rgba(255,255,255,.8);position:relative;z-index:1}
@@ -331,7 +331,18 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
 .detail-matrix tr:last-child td{border-bottom:none}
 .detail-matrix tr:nth-child(even) td{background:var(--bg)}
 .detail-matrix td:first-child{font-weight:600;color:var(--text)}
-@media(max-width:600px){.detail-findings{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){
+  .detail-findings{grid-template-columns:1fr 1fr}
+  .hero-pillars{grid-template-columns:1fr 1fr;gap:12px}
+  .pillar-title{font-size:14px}
+  .pillar-desc{font-size:13px}
+  .hero-p{font-size:15px}
+  .exp-role{font-size:17px}
+  .exp-desc{font-size:14px}
+  .exp-bullets li{font-size:14px}
+  .exp-date{font-size:12px}
+  .exp-meta{padding-bottom:4px}
+}
 .detail-hero-tags{display:flex;gap:8px;flex-wrap:wrap}
 .detail-grid{display:grid;grid-template-columns:65fr 35fr;gap:32px;align-items:start;padding-bottom:80px}
 .detail-portrait-imgs{background:var(--surface2);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;gap:10px;padding:14px}
@@ -364,7 +375,8 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
   .hero-grid{grid-template-columns:1fr;gap:40px}
   .hero-photo-wrap{max-width:340px;margin:0 auto}
   .hero-bg-text{display:none}
-  .hero-pillars{grid-template-columns:1fr}
+  .hero-pillars{grid-template-columns:1fr 1fr}
+  .pillar:last-child{grid-column:1/-1}
   .services-grid,.skills-grid,.about-grid{grid-template-columns:1fr}
   .contact-links{grid-template-columns:1fr}
   .exp-item{grid-template-columns:1fr;gap:12px}
@@ -573,13 +585,13 @@ var T = {
     navCta:'Contactar',
     hero:{
       avail:'Disponible para proyectos',
-      h1:'<span class="accent">Transformando</span> procesos operativos en sistemas escalables',
-      p:'Especializado en convertir flujos manuales y complejos en soluciones digitales medibles. Automatizaci\u00f3n, desarrollo full stack y an\u00e1lisis de datos.',
+      h1:'Ingeniero de Software y <span class="accent">Automatizaci\u00f3n</span>',
+      p:'Transformo procesos manuales en sistemas que ahorran tiempo, reducen errores y facilitan la toma de decisiones.',
       cta1:'Ver Proyectos', cta2:'Descargar CV',
       pillars:[
-        {icon:'settings_suggest',label:'Eficiencia',title:'Eficiencia Operativa',desc:'Maximizaci\u00f3n de recursos mediante automatizaci\u00f3n avanzada para un ROI tangible.'},
-        {icon:'verified_user',label:'Confiabilidad',title:'Integridad de Datos',desc:'Arquitecturas robustas para garantizar consistencia y seguridad en los activos de informaci\u00f3n.'},
-        {icon:'account_tree',label:'Crecimiento',title:'Arquitectura Escalable',desc:'Sistemas modulares preparados para evolucionar con las demandas del mercado.'}
+        {icon:'speed',label:'',title:'Menos tiempo',desc:'Automatizaci\u00f3n de tareas repetitivas'},
+        {icon:'verified',label:'',title:'Menos errores',desc:'Estandarizaci\u00f3n de procesos'},
+        {icon:'insights',label:'',title:'Mejores decisiones',desc:'An\u00e1lisis y visualizaci\u00f3n de datos'}
       ]
     },
     services:{
@@ -685,13 +697,13 @@ var T = {
     navCta:'Contact',
     hero:{
       avail:'Available for projects',
-      h1:'<span class="accent">Transforming</span> operational processes into scalable systems',
-      p:'Specialized in turning manual and complex workflows into measurable digital solutions. Process automation, full stack development and data analytics.',
+      h1:'Software Engineer &amp; <span class="accent">Automation</span>',
+      p:'I turn manual processes into systems that save time, reduce errors and support better decision-making.',
       cta1:'View Projects',cta2:'Download CV',
       pillars:[
-        {icon:'settings_suggest',label:'Efficiency',title:'Operational Efficiency',desc:'Maximizing resources through advanced automation and process optimization for tangible ROI.'},
-        {icon:'verified_user',label:'Reliability',title:'Data Integrity',desc:'Robust architectures ensuring consistency, security and trust in information assets.'},
-        {icon:'account_tree',label:'Growth',title:'Scalable Architecture',desc:'Modular and resilient systems prepared to evolve with dynamic market demands.'}
+        {icon:'speed',label:'',title:'Less time',desc:'Automation of repetitive tasks'},
+        {icon:'verified',label:'',title:'Fewer errors',desc:'Process standardization'},
+        {icon:'insights',label:'',title:'Better decisions',desc:'Data analysis and visualization'}
       ]
     },
     services:{
@@ -824,7 +836,7 @@ function render() {
   tx('hero-cta1', data.hero.cta1);
   tx('hero-cta2', data.hero.cta2);
   ge('hero-pillars').innerHTML = data.hero.pillars.map(function(p){
-    return '<div class="pillar"><div class="pillar-label"><span class="material-symbols-outlined" style="font-size:16px">'+p.icon+'</span>'+p.label+'</div><div class="pillar-title">'+p.title+'</div><div class="pillar-desc">'+p.desc+'</div></div>';
+    return '<div class="pillar"><div class="pillar-title"><span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);flex-shrink:0">'+p.icon+'</span>'+p.title+'</div><div class="pillar-desc">'+p.desc+'</div></div>';
   }).join('');
 
   /* Services */
