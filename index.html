@@ -30,7 +30,7 @@ img{display:block;max-width:100%}
 .fade.in{opacity:1;transform:none}
 
 /* NAV */
-#nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
 #nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .nav-logo{font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.03em;color:var(--text)}
@@ -332,7 +332,6 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
 .detail-matrix td:first-child{font-weight:600;color:var(--text)}
 @media(max-width:600px){
   .detail-findings{grid-template-columns:1fr 1fr}
-  .hero-pillars{grid-template-columns:1fr 1fr;gap:12px}
   .pillar-title{font-size:14px}
   .pillar-desc{font-size:13px}
   .hero-p{font-size:15px}
@@ -371,11 +370,11 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
   .nav-links{display:none}
   .nav-inner{padding:0 20px}
   .container{padding:0 20px}
-  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-grid{grid-template-columns:1fr;gap:64px}
   .hero-photo-wrap{max-width:340px;margin:0 auto}
   .hero-bg-text{display:none}
-  .hero-pillars{grid-template-columns:1fr 1fr}
-  .pillar:last-child{grid-column:1/-1}
+  .hero-pillars{grid-template-columns:1fr 1fr;gap:12px}
+  .pillar:last-child{grid-column:1/-1;justify-self:center;width:calc(50% - 6px)}
   .services-grid,.skills-grid,.about-grid{grid-template-columns:1fr}
   .contact-links{grid-template-columns:1fr}
   .exp-item{grid-template-columns:1fr;gap:12px}
