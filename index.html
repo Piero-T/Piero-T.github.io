@@ -835,7 +835,7 @@ function render() {
   tx('hero-cta1', data.hero.cta1);
   tx('hero-cta2', data.hero.cta2);
   ge('hero-pillars').innerHTML = data.hero.pillars.map(function(p){
-    return '<div class="pillar"><div class="pillar-title"><span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);flex-shrink:0">'+p.icon+'</span>'+p.title+'</div><div class="pillar-desc">'+p.desc+'</div></div>';
+    return '<div class="pillar" style="text-align:center;border:1px solid var(--border);border-radius:14px;padding:20px 16px;background:var(--surface)"><span class="material-symbols-outlined" style="font-size:22px;color:var(--primary);display:block;margin-bottom:8px">'+p.icon+'</span><div class="pillar-title" style="justify-content:center;margin-bottom:4px">'+p.title+'</div><div class="pillar-desc">'+p.desc+'</div></div>';
   }).join('');
 
   /* Services */
@@ -843,7 +843,7 @@ function render() {
   hi('s-services-h2', data.services.h2);
   tx('s-services-desc', data.services.desc);
   ge('services-grid').innerHTML = data.services.items.map(function(s){
-    return '<div class="service-card fade"><div class="service-card-head"><div class="service-icon"><span class="material-symbols-outlined">'+s.icon+'</span></div><div class="service-title">'+s.title+'</div></div><div class="service-desc">'+s.desc+'</div><div class="tag-list">'+s.tags.map(function(tg){ return '<span class="tag">'+tg+'</span>'; }).join('')+'</div></div>';
+    return '<div class="service-card fade"><div class="service-card-head"><div class="service-icon"><span class="material-symbols-outlined">'+s.icon+'</span></div><div class="service-title">'+s.title+'</div></div><div class="service-desc">'+s.desc+'</div></div>';
   }).join('');
 
   /* Projects */
