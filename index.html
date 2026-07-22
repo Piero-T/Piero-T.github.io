@@ -55,7 +55,7 @@ section{padding:64px 0}
 /* HERO */
 #hero{min-height:100vh;padding-top:64px;display:flex;align-items:center;position:relative;overflow:hidden}
 #hero::before{content:'';position:absolute;top:0;right:0;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(5,150,105,.07),transparent 70%);transform:translate(30%,-20%);pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center;width:100%;padding:60px 0}
+.hero-grid{display:grid;grid-template-columns:1fr 480px;gap:64px;align-items:center;width:100%;padding:48px 0}
 .hero-bg-text{position:absolute;top:50%;left:32px;font-family:'Manrope',sans-serif;font-size:clamp(100px,14vw,180px);font-weight:800;color:rgba(15,23,42,.035);letter-spacing:-.05em;transform:translateY(-50%);pointer-events:none;user-select:none;z-index:0;white-space:nowrap}
 .hero-content{position:relative;z-index:1;display:flex;flex-direction:column;gap:28px}
 .hero-avail{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:100px;background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.2);width:fit-content}
@@ -74,6 +74,19 @@ section{padding:64px 0}
 .pillar-label{display:flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:6px}
 .pillar-title{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:6px}
 .pillar-desc{font-size:12px;color:var(--text-muted);line-height:1.6}
+/* HERO SHOWCASE (mosaico) */
+.hero-showcase{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.hs-tile{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);background:var(--surface2);box-shadow:0 18px 50px rgba(15,23,42,.10);display:block;transition:transform .25s,box-shadow .25s}
+.hs-tile:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(15,23,42,.16)}
+.hs-tile img{width:100%;height:100%;display:block}
+.hs-wide{grid-column:1/-1;aspect-ratio:16/9;cursor:pointer}
+.hs-wide img{object-fit:cover;object-position:top left}
+.hs-me{aspect-ratio:3/4}
+.hs-me img{object-fit:cover}
+.hs-app{aspect-ratio:3/4;background:#0d1117;cursor:pointer}
+.hs-app img{object-fit:contain;object-position:center}
+.hs-tag{position:absolute;left:10px;bottom:10px;right:10px;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:100px;padding:6px 12px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hs-tag .material-symbols-outlined{font-size:13px;color:var(--primary);flex-shrink:0}
 .hero-photo-wrap{position:relative}
 .hero-photo{width:100%;aspect-ratio:4/5;border-radius:32px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.12);border:2px solid rgba(255,255,255,.8);position:relative;z-index:1}
 .hero-photo img{width:100%;height:100%;object-fit:cover}
@@ -81,14 +94,23 @@ section{padding:64px 0}
 .photo-placeholder .material-symbols-outlined{font-size:56px;color:var(--text-subtle)}
 .photo-placeholder p{font-size:13px;color:var(--text-muted);text-align:center;line-height:1.5}
 .photo-placeholder small{font-size:11px;opacity:.6}
-.hero-badge{position:absolute;bottom:-12px;right:32px;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);padding:10px 20px;border-radius:100px;border:1px solid var(--border2);box-shadow:0 8px 30px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px}
+.hero-badge{position:absolute;bottom:10px;left:10px;right:10px;justify-content:center;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);padding:10px 20px;border-radius:100px;border:1px solid var(--border2);box-shadow:0 8px 30px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px}
 .badge-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);position:relative}
 .badge-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--primary);animation:ping 1.5s infinite;opacity:0}
 @keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.2);opacity:0}}
 .badge-text{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text)}
 .hero-deco-tr{position:absolute;top:-24px;right:-24px;width:120px;height:120px;border-top:2px solid rgba(5,150,105,.2);border-right:2px solid rgba(5,150,105,.2);border-radius:0 32px 0 0;z-index:0;transition:transform .5s}
-.hero-photo-wrap:hover .hero-deco-tr{transform:translate(6px,-6px)}
+.hero-photo-wrap:hover .hero-deco-tr,.hero-showcase:hover .hero-deco-tr{transform:translate(6px,-6px)}
 .hero-deco-bl{position:absolute;bottom:-24px;left:-24px;width:120px;height:120px;border-bottom:2px solid rgba(5,150,105,.1);border-left:2px solid rgba(5,150,105,.1);border-radius:0 0 0 32px;z-index:0}
+
+/* TRUST STRIP */
+.trust-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#fff;padding:22px 0}
+.trust-inner{display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center}
+.trust-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-subtle)}
+.trust-logos{display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center}
+.trust-logos span{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.01em;color:var(--text-muted);opacity:.65;transition:opacity .2s,color .2s}
+.trust-logos span:hover{opacity:1;color:var(--primary)}
+@media(max-width:600px){.trust-logos{gap:18px}.trust-logos span{font-size:13px}}
 
 /* SERVICES */
 #services{background:#fff}
@@ -112,7 +134,7 @@ section{padding:64px 0}
 .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .proj-featured{grid-column:1/-1;background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .2s}
 .proj-featured:hover{box-shadow:var(--shadow-lg)}
-.proj-img{height:160px;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.proj-img{height:300px;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
 .proj-img .material-symbols-outlined{font-size:40px;color:var(--text-subtle)}
 .proj-img span.hint{font-size:12px;color:var(--text-muted)}
 .proj-body{padding:32px}
@@ -270,7 +292,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
 .all-proj-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-bottom:64px}
 .proj-card{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:all .2s}
 .proj-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-.proj-card-img{height:180px;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.proj-card-img{height:210px;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
 .proj-card-img .material-symbols-outlined{font-size:36px;color:var(--text-subtle)}
 .proj-card-img span.hint{font-size:11px;color:var(--text-muted)}
 .proj-card-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:10px}
@@ -288,10 +310,17 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
 .proj-featured:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
 .proj-img{position:relative}
 .proj-img-badge{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.proj-metric{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:100px;padding:7px 15px;box-shadow:0 4px 16px rgba(0,0,0,.10)}
+.proj-metric b{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:800;color:var(--primary);line-height:1}
+.proj-metric span{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);line-height:1}
+.proj-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,#064e3b,#059669 60%,#34d399)}
+.proj-fallback .material-symbols-outlined{font-size:46px!important;color:rgba(255,255,255,.9)!important}
+.proj-fallback-stack{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:0 24px}
+.proj-fallback-stack i{font-style:normal;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 10px}
 .proj-type-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
 .proj-featured-md{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .2s;display:flex;flex-direction:column;cursor:pointer}
 .proj-featured-md:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-.proj-featured-md-img{height:120px;background:var(--surface2);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--border)}
+.proj-featured-md-img{height:210px;background:var(--surface2);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-bottom:1px solid var(--border)}
 .proj-featured-md-img .material-symbols-outlined{font-size:36px;color:var(--text-subtle)}
 .proj-featured-md-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:8px}
 .proj-featured-md .proj-title{font-size:18px}
@@ -372,6 +401,9 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
   .container{padding:0 20px}
   .hero-grid{grid-template-columns:1fr;gap:64px}
   .hero-photo-wrap{max-width:340px;margin:0 auto}
+  .hero-showcase{max-width:520px;margin:0 auto}
+  .proj-img{height:220px}
+  .proj-featured-md-img{height:180px}
   .hero-bg-text{display:none}
   .hero-pillars{grid-template-columns:1fr 1fr;gap:12px}
   .pillar:last-child{grid-column:1/-1;justify-self:center;width:calc(50% - 6px)}
@@ -426,20 +458,37 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
           </div>
           <div class="hero-pillars" id="hero-pillars"></div>
         </div>
-        <div class="hero-photo-wrap">
+        <div class="hero-showcase">
           <div class="hero-deco-tr"></div>
-          <div class="hero-photo">
-            <img src="assets/me.png" alt="Piero Tavara">
+          <div class="hs-tile hs-wide" onclick="showProjectDetail('gov-procurement')">
+            <img src="images/Government Procurement Intelligence Analysis/preview.JPG" alt="Sistema de inteligencia de contratacion publica" loading="eager">
+            <span class="hs-tag"><span class="material-symbols-outlined">policy</span><span id="hs-tag-1"></span></span>
           </div>
-          <div class="hero-badge">
-            <div class="badge-dot"></div>
-            <span class="badge-text" id="hero-badge-text"></span>
+          <div class="hs-tile hs-me">
+            <img src="assets/me.png" alt="Piero Tavara">
+            <div class="hero-badge">
+              <div class="badge-dot"></div>
+              <span class="badge-text" id="hero-badge-text"></span>
+            </div>
+          </div>
+          <div class="hs-tile hs-app" onclick="showProjectDetail('recruitment-ngr')">
+            <img src="images/simple caller app/Screenshot_20260508_122634.png" alt="App de marcacion automatica">
+            <span class="hs-tag"><span class="material-symbols-outlined">phone_in_talk</span><span id="hs-tag-2"></span></span>
           </div>
           <div class="hero-deco-bl"></div>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="trust-strip">
+    <div class="container trust-inner">
+      <span class="trust-label" id="trust-label"></span>
+      <div class="trust-logos">
+        <span>RCR Consultores</span><span>NGR / Bembos</span><span>UTEC</span><span>Trupal</span><span>UTP</span>
+      </div>
+    </div>
+  </div>
 
   <section id="projects" class="fade">
     <div class="container">
@@ -815,6 +864,36 @@ function setLang(l) {
   render();
 }
 
+var METRICS = {
+  'gov-procurement':   {v:'40+',   es:'entidades rastreadas',  en:'entities tracked'},
+  'recruitment-ngr':   {v:'+125%', es:'productividad',         en:'productivity'},
+  'arch-2d-3d':        {v:'78%',   es:'tasa de detecci\u00f3n',    en:'detection rate'},
+  'habit-tracker':     {v:'15+',   es:'funcionalidades',       en:'features shipped'},
+  'ai-social-skills':  {v:'47',    es:'papers analizados',     en:'papers reviewed'},
+  'autism-lit-review': {v:'83.5%', es:'precisi\u00f3n reportada',  en:'reported accuracy'},
+  'windows-macro':     {v:'100%',  es:'local y portable',      en:'local & portable'},
+  'excel-recruitment': {v:'4',     es:'sesiones dictadas',     en:'sessions delivered'}
+};
+function metricHtml(id) {
+  var m = METRICS[id];
+  if (!m) return '';
+  return '<span class="proj-metric"><b>'+m.v+'</b><span>'+(m[lang]||m.es)+'</span></span>';
+}
+function fallbackHtml(p) {
+  var st = (p.stack || p.tags || []).slice(0,4).map(function(t){ return '<i>'+t+'</i>'; }).join('');
+  return '<div class="proj-fallback"><span class="material-symbols-outlined">'+p.icon+'</span><div class="proj-fallback-stack">'+st+'</div></div>';
+}
+function findProj(id) {
+  var a = d().projects.featured.concat(d().projects.additional);
+  for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i];
+  return null;
+}
+function imgFail(el, id) {
+  var pr = findProj(id); if (!pr) return;
+  el.style.display = 'none';
+  var w = el.parentNode;
+  if (w && !w.querySelector('.proj-fallback')) w.insertAdjacentHTML('afterbegin', fallbackHtml(pr));
+}
 function d() { return T[lang]; }
 function ge(id) { return document.getElementById(id); }
 function hi(id,v) { var e=ge(id); if(e) e.innerHTML=v; }
@@ -834,6 +913,9 @@ function render() {
   tx('hero-p', data.hero.p);
   tx('hero-cta1', data.hero.cta1);
   tx('hero-cta2', data.hero.cta2);
+  tx('trust-label', lang === 'es' ? 'Experiencia en' : 'Experience at');
+  tx('hs-tag-1', lang === 'es' ? 'Inteligencia de contrataci\u00f3n p\u00fablica' : 'Public procurement intelligence');
+  tx('hs-tag-2', lang === 'es' ? 'App de marcaci\u00f3n \u00b7 +125%' : 'Auto-dialer app \u00b7 +125%');
   ge('hero-pillars').innerHTML = data.hero.pillars.map(function(p){
     var topEl = p.label
       ? '<div style="font-family:\'Space Grotesk\';font-size:24px;font-weight:800;color:var(--primary);margin-bottom:4px;line-height:1">'+p.label+'</div>'
@@ -861,12 +943,13 @@ function render() {
     : 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
   var _hThumb = hero.thumbnail || (hero.images && hero.images.length > 0 && !hero.images[0].match(/\.html?$/i) ? hero.images[0] : null);
   var _hImg = _hThumb
-    ? '<img src="'+_hThumb+'" alt="'+hero.title+'" style="'+_hImgStyle+'">'
-    : '<span class="material-symbols-outlined">'+hero.icon+'</span>';
+    ? '<img src="'+_hThumb+'" alt="'+hero.title+'" style="'+_hImgStyle+'" onerror="imgFail(this,\''+hero.id+'\')">'
+    : fallbackHtml(hero);
   var heroHtml = '<div class="proj-featured fade" id="'+hero.id+'" onclick="showProjectDetail(\''+hero.id+'\')">'+
     '<div class="proj-img">'+
       _hImg+
       '<span class="proj-img-badge">'+hero.year+'</span>'+
+      metricHtml(hero.id)+
     '</div>'+
     '<div class="proj-body">'+
       '<div class="proj-type-label">'+hero.type+'</div>'+
@@ -880,15 +963,16 @@ function render() {
     restFp.map(function(p){
       var _pThumb = p.thumbnail || (p.images && p.images.length > 0 && !p.images[0].match(/\.html?$/i) ? p.images[0] : null);
       var _pImgStyle = p.portrait
-        ? 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center 20%;background:#1a1a2e;transform:scale(3);transform-origin:center 20%'
+        ? 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;background:#0d1117'
         : 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:'+(p.thumbPosition||'center');
       var _pImg = _pThumb
-        ? '<img src="'+_pThumb+'" alt="'+p.title+'" style="'+_pImgStyle+'">'
-        : '<span class="material-symbols-outlined">'+p.icon+'</span>';
+        ? '<img src="'+_pThumb+'" alt="'+p.title+'" style="'+_pImgStyle+'" onerror="imgFail(this,\''+p.id+'\')">'
+        : fallbackHtml(p);
       return '<div class="proj-featured-md fade" onclick="showProjectDetail(\''+p.id+'\')">'+
         '<div class="proj-featured-md-img">'+
           _pImg+
           '<span class="proj-img-badge">'+p.year+'</span>'+
+          metricHtml(p.id)+
         '</div>'+
         '<div class="proj-featured-md-body">'+
           '<div class="proj-type-label">'+p.type+'</div>'+
@@ -977,14 +1061,15 @@ function render() {
   function projCardHtml(p) {
     var _cThumb = p.thumbnail || (p.images && p.images.length > 0 && !p.images[0].match(/\.html?$/i) ? p.images[0] : null);
     var _cImgStyle = p.portrait
-      ? 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center 20%;background:#1a1a2e;transform:scale(3);transform-origin:center 20%'
-      : 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
+      ? 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;background:#0d1117'
+      : 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:'+(p.thumbPosition||'center');
     var _cImg = _cThumb
-      ? '<img src="'+_cThumb+'" alt="'+p.title+'" style="'+_cImgStyle+'">'
-      : '<span class="material-symbols-outlined">'+p.icon+'</span>';
+      ? '<img src="'+_cThumb+'" alt="'+p.title+'" style="'+_cImgStyle+'" onerror="imgFail(this,\''+p.id+'\')">'
+      : fallbackHtml(p);
     return '<div class="proj-card fade" style="grid-column:span '+p.cols+';cursor:pointer" onclick="showProjectDetail(\''+p.id+'\')">'+
       '<div class="proj-card-img">'+
         _cImg+
+        metricHtml(p.id)+
       '</div>'+
       '<div class="proj-card-body">'+
         '<div class="proj-card-meta">'+
@@ -1010,10 +1095,10 @@ function render() {
     ? 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center 15%;background:#0d1117'
     : 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
   var _apImg = _apThumb
-    ? '<img src="'+_apThumb+'" alt="'+apHero.title+'" style="'+_apImgStyle+'">'
-    : '<span class="material-symbols-outlined">'+apHero.icon+'</span>';
+    ? '<img src="'+_apThumb+'" alt="'+apHero.title+'" style="'+_apImgStyle+'" onerror="imgFail(this,\''+apHero.id+'\')">'
+    : fallbackHtml(apHero);
   var apHeroHtml = '<div class="proj-featured fade" onclick="showProjectDetail(\''+apHero.id+'\')">'+
-    '<div class="proj-img">'+_apImg+'<span class="proj-img-badge">'+apHero.year+'</span></div>'+
+    '<div class="proj-img">'+_apImg+'<span class="proj-img-badge">'+apHero.year+'</span>'+metricHtml(apHero.id)+'</div>'+
     '<div class="proj-body">'+
       '<div class="proj-type-label">'+apHero.type+'</div>'+
       '<div class="proj-tags">'+apHero.tags.map(function(tg){ return '<span class="proj-chip">'+tg+'</span>'; }).join('')+'</div>'+
@@ -1028,10 +1113,10 @@ function render() {
       ? 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center 20%;background:#1a1a2e;transform:scale(3);transform-origin:center 20%'
       : 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:'+(p.thumbPosition||'center');
     var _pImg = _pThumb
-      ? '<img src="'+_pThumb+'" alt="'+p.title+'" style="'+_pImgStyle+'">'
-      : '<span class="material-symbols-outlined">'+p.icon+'</span>';
+      ? '<img src="'+_pThumb+'" alt="'+p.title+'" style="'+_pImgStyle+'" onerror="imgFail(this,\''+p.id+'\')">'
+      : fallbackHtml(p);
     return '<div class="proj-featured-md fade" onclick="showProjectDetail(\''+p.id+'\')">'+
-      '<div class="proj-featured-md-img">'+_pImg+'<span class="proj-img-badge">'+p.year+'</span></div>'+
+      '<div class="proj-featured-md-img">'+_pImg+'<span class="proj-img-badge">'+p.year+'</span>'+metricHtml(p.id)+'</div>'+
       '<div class="proj-featured-md-body">'+
         '<div class="proj-type-label">'+p.type+'</div>'+
         '<div class="proj-tags">'+p.tags.map(function(tg){ return '<span class="proj-chip">'+tg+'</span>'; }).join('')+'</div>'+
