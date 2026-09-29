@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -230,15 +229,10 @@ section{padding:64px 0}
 
 /* ABOUT */
 #about{background:#fff}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-grid{max-width:640px}
 .about-text{display:flex;flex-direction:column;gap:20px}
 .about-p{font-size:15px;color:var(--text-muted);line-height:1.85}
 .about-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-.about-photo{position:relative}
-.about-photo-inner{aspect-ratio:1;border-radius:28px;overflow:hidden;border:1px solid var(--border);min-height:380px}
-.about-photo-inner #about-map{width:100%;height:100%;min-height:380px}
-.district-label{background:rgba(255,255,255,.92)!important;border:1px solid rgba(5,150,105,.3)!important;box-shadow:0 2px 8px rgba(0,0,0,.1)!important;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#047857;white-space:nowrap;padding:4px 8px!important;border-radius:6px!important}
-.district-label::before{display:none!important}
 
 /* CONTACT */
 #contact{background:var(--bg)}
@@ -561,11 +555,6 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
               <span class="material-symbols-outlined" style="font-size:18px">download</span>
               <span id="s-about-cta2"></span>
             </a>
-          </div>
-        </div>
-        <div class="about-photo">
-          <div class="about-photo-inner">
-            <div id="about-map"></div>
           </div>
         </div>
       </div>
@@ -1363,25 +1352,6 @@ window.addEventListener('popstate', function(e) {
 
 render();
 history.replaceState({page:'home'}, '');
-</script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-(function(){
-  var surco = [
-    [-12.1063,-77.0050],[-12.0940,-76.9850],[-12.0965,-76.9590],
-    [-12.1160,-76.9375],[-12.1530,-76.9310],[-12.1755,-76.9495],
-    [-12.1840,-76.9700],[-12.1775,-77.0050],[-12.1635,-77.0210],
-    [-12.1390,-77.0225],[-12.1063,-77.0050]
-  ];
-  var map = L.map('about-map',{zoomControl:false,scrollWheelZoom:false,dragging:false,doubleClickZoom:false,touchZoom:false,keyboard:false,attributionControl:false})
-    .setView([-12.148,-76.982],12);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
-    subdomains:'abcd',maxZoom:19
-  }).addTo(map);
-  L.polygon(surco,{color:'#059669',fillColor:'#059669',fillOpacity:0.28,weight:2.5})
-    .addTo(map)
-    .bindTooltip('Santiago de Surco',{permanent:true,direction:'center',className:'district-label'});
-})();
 </script>
 </body>
 </html>
