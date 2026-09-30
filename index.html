@@ -96,6 +96,7 @@ section{padding:64px 0}
 .photo-placeholder p{font-size:13px;color:var(--text-muted);text-align:center;line-height:1.5}
 .photo-placeholder small{font-size:11px;opacity:.6}
 .hero-badge{position:absolute;bottom:10px;left:10px;right:10px;justify-content:center;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);padding:10px 20px;border-radius:100px;border:1px solid var(--border2);box-shadow:0 8px 30px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px}
+.badge-short,.hs-tag-short{display:none}
 .badge-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);position:relative}
 .badge-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--primary);animation:ping 1.5s infinite;opacity:0}
 @keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.2);opacity:0}}
@@ -376,6 +377,14 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
 .detail-matrix td:first-child{font-weight:600;color:var(--text)}
 @media(max-width:600px){
   html,body{overflow-x:hidden}
+  .hero-badge{right:auto;left:8px;bottom:8px;padding:5px 10px;gap:6px;box-shadow:0 4px 14px rgba(0,0,0,.1)}
+  .hero-badge .badge-dot{width:6px;height:6px}
+  .hero-badge #hero-badge-text{display:none}
+  .hero-badge .badge-short{display:inline;font-size:9px;letter-spacing:.1em}
+  .hs-tag{left:8px;bottom:8px;right:auto;max-width:calc(100% - 16px);padding:5px 10px;gap:5px;font-size:9px;letter-spacing:.04em}
+  .hs-tag .material-symbols-outlined{font-size:12px}
+  #hs-tag-2{display:none}
+  .hs-tag .hs-tag-short{display:inline}
   section{padding:48px 0}
   .nav-logo{font-size:16px}
   .nav-right{gap:8px}
@@ -515,11 +524,12 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
             <div class="hero-badge">
               <div class="badge-dot"></div>
               <span class="badge-text" id="hero-badge-text"></span>
+              <span class="badge-text badge-short" id="hero-badge-short"></span>
             </div>
           </div>
           <div class="hs-tile hs-app" onclick="showProjectDetail('recruitment-ngr')">
             <img src="images/simple caller app/Screenshot_20260508_122634.png" alt="App de marcacion automatica">
-            <span class="hs-tag"><span class="material-symbols-outlined">phone_in_talk</span><span id="hs-tag-2"></span></span>
+            <span class="hs-tag"><span class="material-symbols-outlined">phone_in_talk</span><span id="hs-tag-2"></span><span id="hs-tag-2s" class="hs-tag-short"></span></span>
           </div>
           <div class="hero-deco-bl"></div>
         </div>
@@ -681,6 +691,7 @@ var T = {
     navCta:'Contactar',
     hero:{
       avail:'Disponible para proyectos',
+      availShort:'Disponible',
       h1:'Automatizo procesos manuales para ahorrar hasta un <span class="accent">90% de tiempo.</span>',
       p:'Automatizo lo repetitivo para que tu equipo dedique su tiempo a lo que requiere su experiencia.',
       cta1:'Ver Impacto', cta2:'Descargar CV',
@@ -807,6 +818,7 @@ var T = {
     navCta:'Contact',
     hero:{
       avail:'Available for projects',
+      availShort:'Available',
       h1:'I automate manual processes to save up to <span class="accent">90% of time.</span>',
       p:'I automate the repetitive work so your team can spend its time on what needs their expertise.',
       cta1:'See the Impact',cta2:'Download CV',
@@ -993,6 +1005,7 @@ function render() {
   /* Hero */
   tx('hero-avail', data.hero.avail);
   tx('hero-badge-text', data.hero.avail);
+  tx('hero-badge-short', data.hero.availShort);
   hi('hero-h1', data.hero.h1);
   tx('hero-p', data.hero.p);
   tx('hero-cta1', data.hero.cta1);
@@ -1000,6 +1013,7 @@ function render() {
   tx('trust-label', lang === 'es' ? 'Experiencia en' : 'Experience at');
   tx('hs-tag-1', lang === 'es' ? 'Inteligencia de contrataci\u00f3n p\u00fablica' : 'Public procurement intelligence');
   tx('hs-tag-2', lang === 'es' ? 'App de marcaci\u00f3n \u00b7 +125%' : 'Auto-dialer app \u00b7 +125%');
+  tx('hs-tag-2s', lang === 'es' ? '+125% llamadas' : '+125% calls');
   ge('hero-pillars').innerHTML = data.hero.pillars.map(function(p){
     var topEl = p.label
       ? '<div class="pillar-num">'+p.label+'</div>'
