@@ -399,6 +399,17 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 32px}
 .detail-matrix td:first-child{font-weight:600;color:var(--text)}
 @media(max-width:600px){
   html,body{overflow-x:hidden}
+  .all-proj-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .all-proj-grid .proj-card{grid-column:auto !important;border-radius:14px}
+  .all-proj-grid .proj-section-label{margin:32px 0 4px}
+  .proj-card-img{height:104px}
+  .proj-card .proj-metric,.proj-card .tag-list{display:none}
+  .proj-card-body{padding:12px;gap:6px}
+  .proj-card .proj-type-label{font-size:9px;margin-top:0 !important}
+  .proj-card-title{font-size:14px}
+  .proj-card-desc{flex:none;font-size:12px;line-height:1.5;max-height:4.5em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .proj-card-year{font-size:11px}
+  .proj-card-link{font-size:12px}
   .hero-badge{right:auto;left:8px;bottom:8px;padding:5px 10px;gap:6px;box-shadow:0 4px 14px rgba(0,0,0,.1)}
   .hero-badge .badge-dot{width:6px;height:6px}
   .hero-badge #hero-badge-text{display:none}
