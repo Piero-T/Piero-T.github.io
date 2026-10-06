@@ -95,7 +95,10 @@ header h1{font-size:18px;font-weight:700;letter-spacing:-.01em}
   .kpi{padding:12px}
   .kpi span{font-size:9.5px;letter-spacing:.03em}
   .kpi b{font-size:20px}
-  .filters{flex-wrap:nowrap;overflow-x:auto;padding:10px 12px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;padding:10px 12px;scrollbar-width:none}
+  .filters::-webkit-scrollbar,aside::-webkit-scrollbar{display:none}
+  aside{scrollbar-width:none}
+  .nav{padding:9px 8px}
   .filters .sp{display:none}
   .chip,.seg,.filters .lbl{flex-shrink:0}
   .grid{grid-template-columns:minmax(0,1fr)}
