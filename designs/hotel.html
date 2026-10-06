@@ -40,6 +40,27 @@ nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:
 .room h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;margin-top:18px}
 .room p{color:var(--muted);font-size:15px;margin-top:4px}
 .amen{display:flex;gap:16px;margin-top:12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sea)}
+@media(max-width:900px){
+  .hero{height:580px}
+  nav{padding:18px 16px}
+  .logo{font-size:24px}
+  .links{display:none}
+  .book{padding:9px 14px;font-size:11px}
+  .copy{padding:56px 16px 0}
+  .copy small{font-size:11px;letter-spacing:.22em}
+  .copy h1{font-size:50px}
+  .copy p{font-size:15px}
+  .bar{margin:-44px 16px 0;grid-template-columns:1fr 1fr}
+  .f{padding:14px 16px;border-bottom:1px solid var(--line)}
+  .f:nth-child(2n){border-right:none}
+  .f b{font-size:20px}
+  .go{grid-column:1/-1;justify-content:center;padding:16px}
+  .sec{padding:56px 16px 48px}
+  .sec-h{flex-direction:column;align-items:flex-start;gap:14px}
+  .sec-h h2{font-size:40px}
+  .rooms{grid-template-columns:minmax(0,1fr);gap:32px}
+  .room-img{height:240px}
+}
 </style>
 </head>
 <body>

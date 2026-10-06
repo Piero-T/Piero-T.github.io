@@ -79,6 +79,35 @@ header h1{font-size:18px;font-weight:700;letter-spacing:-.01em}
 .item p{font-size:12px;color:var(--muted);text-transform:uppercase;margin-top:4px}
 .tag{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;font-weight:600;color:var(--c)}
 .tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--c)}
+.menu-btn{display:none}
+@media(max-width:900px){
+  body{grid-template-columns:1fr}
+  aside{position:sticky;top:0;z-index:5;height:auto;flex-direction:row;align-items:center;gap:4px;padding:10px 12px;overflow-x:auto}
+  .brand{padding:0 8px 0 0}
+  .brand small,.side-foot,.nav .pill{display:none}
+  .nav{padding:9px 10px;font-size:0;gap:0}
+  .nav svg{width:20px;height:20px}
+  .nav.on{box-shadow:inset 0 -3px 0 var(--accent)}
+  header{padding:12px 16px}
+  .search{display:none}
+  .wrap{padding:14px 16px;gap:12px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .kpi{padding:12px}
+  .kpi span{font-size:9.5px;letter-spacing:.03em}
+  .kpi b{font-size:20px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;padding:10px 12px}
+  .filters .sp{display:none}
+  .chip,.seg,.filters .lbl{flex-shrink:0}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .cal-h{padding:12px 14px}
+  .dow b{padding:8px 0;font-size:9px;letter-spacing:0}
+  .day{min-height:64px;padding:5px 4px;gap:3px}
+  .day .n{font-size:11px;margin-bottom:0}
+  .day.today .n{width:20px;height:20px;font-size:10px}
+  .ev{height:6px;padding:0;border-left:none;border-radius:3px;background:var(--c)}
+  .ev b,.ev small{display:none}
+  .item{padding:14px 16px}
+}
 </style>
 </head>
 <body>
