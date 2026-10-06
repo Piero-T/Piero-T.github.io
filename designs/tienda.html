@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Altura Café · Concepto de tienda online</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f6f1ea;--paper:#fffdf9;--ink:#2a1f1a;--muted:#7a6a5f;--olive:#3f4a2a;--terra:#c65d3b;--sand:#e9dfd1;--line:#e4d9ca}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--ink)}
+.top{background:var(--olive);color:#e8ead9;text-align:center;font-size:13px;padding:9px;letter-spacing:.02em}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 64px}
+.logo{font-family:Fraunces,serif;font-size:26px;font-weight:700;letter-spacing:-.02em}
+.logo span{color:var(--terra)}
+.links{display:flex;gap:34px;font-size:15px;font-weight:500}
+.links a{color:var(--ink);text-decoration:none}
+.links a.on{border-bottom:2px solid var(--terra);padding-bottom:4px}
+.icons{display:flex;gap:14px;align-items:center}
+.ic{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:var(--paper);position:relative}
+.ic svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:1.8}
+.ic em{position:absolute;top:-4px;right:-4px;background:var(--terra);color:#fff;font-style:normal;font-size:11px;font-weight:700;width:20px;height:20px;border-radius:50%;display:grid;place-items:center}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:28px 64px 56px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--olive);background:#e3e6d3;padding:7px 14px;border-radius:99px}
+h1{font-family:Fraunces,serif;font-weight:700;font-size:76px;line-height:.98;letter-spacing:-.035em;margin:22px 0 22px}
+h1 em{font-style:italic;color:var(--terra);font-weight:500}
+.lead{font-size:18px;line-height:1.6;color:var(--muted);max-width:460px}
+.ctas{display:flex;gap:12px;margin-top:32px}
+.btn{padding:16px 28px;border-radius:99px;font-weight:700;font-size:15px;border:1.5px solid var(--ink)}
+.btn.dark{background:var(--ink);color:var(--cream)}
+.proof{display:flex;gap:28px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
+.proof b{font-family:Fraunces,serif;font-size:28px;display:block}
+.proof span{font-size:13px;color:var(--muted)}
+.stage{position:relative;height:540px;border-radius:32px;background:radial-gradient(circle at 50% 55%,#e8c9a8 0,#dcb48d 38%,#c99a6e 100%);overflow:hidden}
+.stage::after{content:'';position:absolute;inset:auto -10% -30% -10%;height:55%;background:#b9875c;border-radius:50% 50% 0 0}
+.bag{position:absolute;z-index:2;width:220px;height:310px;border-radius:16px 16px 26px 26px;box-shadow:0 30px 60px rgba(42,31,26,.28);display:flex;flex-direction:column;align-items:center}
+.bag::before{content:'';width:100%;height:28px;border-radius:16px 16px 0 0;background:repeating-linear-gradient(90deg,rgba(0,0,0,.08) 0 3px,transparent 3px 9px)}
+.bag .lbl{margin-top:44px;width:150px;background:var(--paper);border-radius:10px;padding:16px 12px;text-align:center}
+.bag .lbl b{font-family:Fraunces,serif;font-size:21px;display:block;line-height:1.05}
+.bag .lbl small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.bag .lbl i{display:block;width:30px;height:2px;background:var(--terra);margin:10px auto 0}
+.b1{background:var(--olive);left:120px;top:110px;transform:rotate(-6deg)}
+.b2{background:var(--terra);left:300px;top:150px;transform:rotate(5deg);width:200px;height:290px}
+.bean{position:absolute;z-index:3;width:22px;height:30px;border-radius:50%;background:#4a2c1d;box-shadow:inset -3px -3px 0 rgba(0,0,0,.25)}
+.bean::after{content:'';position:absolute;left:50%;top:15%;bottom:15%;width:2px;background:#2a170e;border-radius:2px;transform:translateX(-50%) rotate(8deg)}
+.card{position:absolute;z-index:4;background:var(--paper);border-radius:18px;padding:14px 18px;box-shadow:0 18px 40px rgba(42,31,26,.18);font-size:13px}
+.card b{display:block;font-size:15px}
+.rev{right:28px;top:34px}
+.rev .st{color:#d4a017;letter-spacing:2px;font-size:14px}
+.ship{left:28px;bottom:30px;display:flex;align-items:center;gap:12px}
+.ship i{width:38px;height:38px;border-radius:12px;background:#e3e6d3;display:grid;place-items:center;font-style:normal;font-size:18px}
+.strip{display:flex;justify-content:space-between;padding:22px 64px;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px;font-weight:500;color:var(--muted)}
+.strip span::before{content:'✦';color:var(--terra);margin-right:10px}
+.sec{padding:56px 64px}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px}
+.sec-h h2{font-family:Fraunces,serif;font-size:44px;letter-spacing:-.03em}
+.tabs{display:flex;gap:8px}
+.tabs b{padding:9px 18px;border-radius:99px;border:1px solid var(--line);font-size:14px;font-weight:500;background:var(--paper)}
+.tabs b.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.p{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.p-img{height:240px;display:grid;place-items:center;position:relative}
+.p-img .bag{position:static;width:130px;height:180px;box-shadow:0 18px 30px rgba(42,31,26,.22)}
+.p-img .bag .lbl{margin-top:26px;width:94px;padding:10px 6px}
+.p-img .bag .lbl b{font-size:14px}
+.p-img .bag::before{height:18px}
+.p-img .tag{position:absolute;top:14px;left:14px;background:var(--paper);font-size:11px;font-weight:700;padding:5px 10px;border-radius:99px;letter-spacing:.04em}
+.p-body{padding:18px 20px 20px}
+.p-body small{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.p-body h3{font-family:Fraunces,serif;font-size:22px;margin:4px 0 6px}
+.notes{font-size:13px;color:var(--muted)}
+.buy{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.buy b{font-size:19px}
+.add{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-size:22px}
+</style>
+</head>
+<body>
+<div class="top">Envío gratis en Lima por compras desde S/ 120 · Tostamos cada martes</div>
+<nav>
+  <div class="logo">altura<span>.</span></div>
+  <div class="links"><a class="on" href="#">Tienda</a><a href="#">Suscripción</a><a href="#">Orígenes</a><a href="#">Métodos</a><a href="#">Nosotros</a></div>
+  <div class="icons">
+    <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></div>
+    <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div>
+    <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.5 12h-11z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><em>2</em></div>
+  </div>
+</nav>
+<section class="hero">
+  <div>
+    <span class="eyebrow">● Nueva cosecha 2026</span>
+    <h1>Café de altura, <em>tostado</em> esta semana.</h1>
+    <p class="lead">Granos de pequeños productores de Cajamarca, Cusco y Puno. Tostado en lotes chicos y enviado a tu puerta en 48 horas.</p>
+    <div class="ctas"><span class="btn dark">Comprar café</span><span class="btn">Armar suscripción</span></div>
+    <div class="proof"><div><b>14</b><span>fincas aliadas</span></div><div><b>48 h</b><span>del tostador a tu taza</span></div><div><b>4.9</b><span>valoración promedio</span></div></div>
+  </div>
+  <div class="stage">
+    <div class="bag b1"><div class="lbl"><b>Cajamarca</b><small>Lavado · 1 900 msnm</small><i></i></div></div>
+    <div class="bag b2"><div class="lbl"><b>Villa Rica</b><small>Honey · 1 600 msnm</small><i></i></div></div>
+    <div class="bean" style="left:96px;top:420px;transform:rotate(30deg)"></div>
+    <div class="bean" style="left:132px;top:446px;transform:rotate(-20deg)"></div>
+    <div class="bean" style="left:470px;top:440px;transform:rotate(60deg)"></div>
+    <div class="bean" style="left:505px;top:412px;transform:rotate(10deg)"></div>
+    <div class="card rev"><span class="st">★★★★★</span><b>“El mejor café que he pedido”</b>María, Miraflores</div>
+    <div class="card ship"><i>☕</i><div><b>Molido a tu gusto</b>Prensa, V60 o espresso</div></div>
+  </div>
+</section>
+<div class="strip"><span>Comercio directo con productores</span><span>Tueste en lotes de 5 kg</span><span>Empaque con válvula</span><span>Pago con Yape o tarjeta</span></div>
+<section class="sec">
+  <div class="sec-h"><h2>Los más pedidos</h2><div class="tabs"><b class="on">Todos</b><b>Filtrados</b><b>Espresso</b><b>Descafeinado</b></div></div>
+  <div class="grid">
+    <div class="p"><div class="p-img" style="background:#e3e6d3"><span class="tag">MÁS VENDIDO</span><div class="bag" style="background:var(--olive)"><div class="lbl"><b>Cajamarca</b><small>250 g</small></div></div></div>
+      <div class="p-body"><small>Lavado · Tueste medio</small><h3>Cajamarca</h3><p class="notes">Chocolate, mandarina, panela</p><div class="buy"><b>S/ 42</b><span class="add">+</span></div></div></div>
+    <div class="p"><div class="p-img" style="background:#f3dccf"><div class="bag" style="background:var(--terra)"><div class="lbl"><b>Villa Rica</b><small>250 g</small></div></div></div>
+      <div class="p-body"><small>Honey · Tueste claro</small><h3>Villa Rica</h3><p class="notes">Frutos rojos, miel, cacao</p><div class="buy"><b>S/ 46</b><span class="add">+</span></div></div></div>
+    <div class="p"><div class="p-img" style="background:#e6e0f0"><span class="tag">EDICIÓN LIMITADA</span><div class="bag" style="background:#4b3a6b"><div class="lbl"><b>Sandia</b><small>250 g</small></div></div></div>
+      <div class="p-body"><small>Natural · Tueste claro</small><h3>Sandia, Puno</h3><p class="notes">Jazmín, durazno, té negro</p><div class="buy"><b>S/ 58</b><span class="add">+</span></div></div></div>
+    <div class="p"><div class="p-img" style="background:#efe6d6"><div class="bag" style="background:var(--ink)"><div class="lbl"><b>Espresso</b><small>500 g</small></div></div></div>
+      <div class="p-body"><small>Blend · Tueste oscuro</small><h3>Blend Espresso</h3><p class="notes">Cacao amargo, nuez, caramelo</p><div class="buy"><b>S/ 64</b><span class="add">+</span></div></div></div>
+  </div>
+</section>
+</body>
+</html>
